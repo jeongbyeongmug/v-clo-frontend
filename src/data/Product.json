@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "model": "하정",
+    "category": ["아우터","상의","하의"],
+    "img":"url" ,
+    "color": ["black", "white"],
+    "title":"하정's 옷",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 10000
+  },
+
+  {
+    "id": 2,
+    "model": "병묵",
+    "category": ["아우터","상의","하의"],
+    "img":"url" ,
+    "color": ["black", "white"],
+    "title":"병묵's 옷",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 10000
+  },
+
+  {
+    "id": 3,
+    "model": "성준",
+    "category": ["아우터","상의","하의"],
+    "img":"url" ,
+    "color": ["black", "white"],
+    "title":"성준's 옷",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 10000
+  },
+
+  {
+    "id": 4,
+    "model": "다희",
+    "category": ["아우터","상의","하의"],
+    "img":"url" ,
+    "color": ["black", "white"],
+    "title":"다희's 옷",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 10000
+  },
+
+  {
+    "id": 5,
+    "model": "순영",
+    "category": ["아우터","상의","하의"],
+    "img":"url" ,
+    "color": ["black", "white"],
+    "title":"순영's 옷",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 10000
+  }
+]
