@@ -1,0 +1,23 @@
+import { useProduct } from '../context/ProductContext';
+import {NavLink,Routes,Route} from 'react-router-dom';
+import ProductList from './ProductDetails';
+import Home from './Home';
+
+export default function Section() {
+    const { product } = useProduct();
+    return (
+    <section className="section">
+        <div className="mainContainer">
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/productList/*' element={<ProductList />} />
+            </Routes>
+        </div>
+        <div className="chatSupport">
+            <p>chat support</p>
+        </div>
+        <nav className="sideNav">
+            <p>side nav</p>
+        </nav>
+    </section>
+)}//Section

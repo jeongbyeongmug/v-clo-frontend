@@ -7,6 +7,8 @@ import kakao from '../assets/images/ic_kakao.svg'
 import google from '../assets/images/ic_google.svg'
 import naver from '../assets/images/ic_naver.svg'
 import apple from '../assets/images/ic_apple.svg'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 
 

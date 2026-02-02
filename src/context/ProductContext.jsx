@@ -14,5 +14,11 @@ export function ProductProvider({ children }) {
 )}//ProductProvider
 
 export function useProduct() {
-    return useContext(ProductContext);
+    const context = useContext(ProductContext);
+    
+    // context가 undefined라면 Provider 내부가 아니라는 뜻입니다.
+    if (context === undefined) {
+        throw new Error('useProduct는 ProductProvider 내부에서만 사용할 수 있습니다.');
+    }
+    return context;
 }
