@@ -1,0 +1,34 @@
+
+* {margin: 0; padding: 0; border: 0;}
+
+.Join-container {
+    width: 640px;
+    height: 674px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.Join-container header {
+    height: 64px;
+    position: relative;
+    border-bottom: 1px solid rgb(228, 230, 233);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 뒤로가기 버튼 */
+.Join-container .backBtn {
+    width: 30px;
+    height: 30px;
+    position:absolute; top: 16.5px; left: 10px;
+    font-size: 27px; color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+/* 회원가입 텍스트 */
+.Join-container header h2{
+    font-size: 20px;
+    font-family: "Noto Sans KR", "Noto Sans CJK KR", "맑은 고딕", "Malgun Gothic", sans-serif;
+    display: block;
+}
