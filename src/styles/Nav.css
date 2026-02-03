@@ -1,5 +1,6 @@
 /* 전체 헤더 메인 컨테이너 */
 .nav {
+  
   display: flex;
   align-items: center;
   justify-content: space-between; /* 좌측 그룹과 우측 그룹을 양 끝으로 배치 */

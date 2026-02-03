@@ -2,6 +2,8 @@ import { useProduct } from '../context/ProductContext';
 import {NavLink,Routes,Route} from 'react-router-dom';
 import ProductList from './ProductDetails';
 import Home from './Home';
+import SideBar from '../components/SideBar';
+ './Home';
 
 export default function Section() {
     const { product } = useProduct();
@@ -17,7 +19,9 @@ export default function Section() {
             <p>chat support</p>
         </div>
         <nav className="sideNav">
-            <p>side nav</p>
+            <Routes>
+                <Route path='/' element={<SideBar />} />
+            </Routes>
         </nav>
     </section>
 )}//Section

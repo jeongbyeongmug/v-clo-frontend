@@ -1,12 +1,15 @@
 /* 기본 초기화 */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* 다른 요소보다 위에 보이도록*/
   width: 100%;
   font-family: 'Pretendard', sans-serif;
 }
 
 /* 띠 배너 */
 .top-banner {
-  background-color: #000; /* 아뜨랑스는 가끔 핑크(#ffb6c1)나 블랙을 써요 */
+  background-color: #000; 
   color: #fff;
   height: 38px;
   display: flex;

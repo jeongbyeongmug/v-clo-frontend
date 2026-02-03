@@ -133,7 +133,7 @@ function App() {
           {check ? '' : alert(rsn)}
         }
       } //if_else
-    }//onJoinSubmit
+  }//onJoinSubmit
 
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [cartItems, setCartItems] = useState([
@@ -168,12 +168,17 @@ function App() {
     <Routes>
       {/* 기본 화면: 헤더, 네브, 바디 다 보여주고 싶을 때 */}
       <Route path="*" element={
-        <>
-          <Header />
-          <Nav isLogin={isLogin} onLogout={onLogout} />
-          <Section />
+        <div className='app-container'>
+          <div className='sticky-top'>
+            <Header />
+            {location.pathname === "/" && (
+              <Nav isLogin={isLogin} onLogout={onLogout} />
+            )}
+           </div>
+           <Section />
           <Footer />
-        </>
+        </div>
+      
       } />
        
       {/* 로그인 화면: 깔끔하게 로그인 컴포넌트만! */}
@@ -188,10 +193,8 @@ function App() {
 
 
       {/* 장바구니, 마이페이지 */}
-      <Route path="*" element={<><Header /><Nav isLogin={loginInfo.isLogin} onLogout={() => { sessionStorage.clear(); setLoginInfo({ isLogin: false }); navigate('/'); }} /><Section /><Footer /></>} />
       <Route path="/cart" element={loginInfo.isLogin ? <Cart cartItems={cartItems} onAddToCart={handleAddToCart} handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id ? { ...i, count: Math.max(1, i.count + d) } : i))} handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscountRate={appliedDiscount} /> : <Navigate to="/login" />} />
       <Route path="/myPage" element={loginInfo.isLogin ? <MyPage id={loginInfo.id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} /> : <Navigate to="/login" />} />
-      <Route path="/login" element={<Login onLoginSubmit={(id) => { const d = { isLogin: true, id: id }; sessionStorage.setItem('loginInfo', JSON.stringify(d)); setLoginInfo(d); navigate('/'); }} />} />
     </Routes>
   );
 }

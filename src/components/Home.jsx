@@ -8,7 +8,7 @@ export default function Home() {
     return (
     <div className="mainContainer">
         <div className="banner">
-            <p>banner</p>
+            <img src="/public/images/banner.jpg" alt="banner.jpg" width="1920" height="600" />
         </div>
         <ul className="productUl">
             {product.map(({id, img, model, color, category, title, price})=>{

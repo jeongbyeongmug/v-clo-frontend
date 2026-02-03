@@ -12,30 +12,24 @@
   display: flex;
   flex-direction: column;
 }
-
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white; /* 배경색이 있어야 본문과 겹칠 때 글자가 안 섞임 */
+  width: 100%;
+}
 .header {
   margin: 0;
   width: 100vw; height: 40px;
   background-color: white;
 }
 
-.nav {
-  width: 100%; height: 50px;
-  background-color: #48ff00;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  position: sticky;
-  z-index: 100;
-  top: 0;
-}
-
 .section {
-  max-width: 100vw; height: 2330px;
-  background-color: #00c3ff;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  flex: 1;
+  width: 100%;
+  background-color: white;
+  min-height: 500px;
 }
 
 .banner {
@@ -60,13 +54,6 @@
   padding: 30px 0px 30px 0px;
 }
 
-.sideNav {
-  width: 100px; height: 400px;
-  background-color: #fff29e;
-  position: fixed;
-  top: 300px; right:5px;
-}
-
 .chatSupport {
   width: 80px; height: 80px;
   background-color: #ff00d4;
@@ -76,12 +63,11 @@
 }
 
 .footer {
-  width: 100vw; height: 80px;
-  text-align: center;
-  clear:both;
+  width: 100%; height: 80px;
   background-color: #c2c2c2;
-  position: absolute;
-  bottom: 0px;
+  text-align: center;
+  position: relative;
+  margin-top: auto;
 }
 
 /* App.css */
@@ -105,16 +91,6 @@
   padding: 0 20px;
 }
 
-.header {
-  background-color: var(--white);
-  padding: 15px 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.header .inner {
-  display: flex;
-  align-items: center;
-}
 
 .logo {
   
@@ -304,4 +280,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}s
+}
