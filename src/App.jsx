@@ -188,7 +188,7 @@ function App() {
       <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
       {/* 제품 상세 페이지 */}
-      <Route path="/Productpage" element={<ProductDetail />} />
+      <Route path="/productDetail" element={<ProductDetail />} />
       <Route path="*" element={<ProductDetail />} />
 
 

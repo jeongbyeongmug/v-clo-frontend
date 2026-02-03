@@ -1,37 +1,26 @@
 import {useSearchParams,NavLink} from 'react-router-dom';
 import '../styles/ProductList.css';
 import { useProduct } from '../context/ProductContext';
-
+import {SearchResult, Category} from './SearchResult';
 
 export default function ProductList() {
     const [searchParams, setSearchParams] = useSearchParams();
+    const queryValue = 
+        searchParams.get('query') || 
+        searchParams.get('category') || 
+        searchParams.get('model') || 
+        searchParams.get('color') ||
+        '';
     const { product } = useProduct();
-    const keyword = searchParams.get('query');
+    let searchList = product.filter( ({model, color, category, title}) =>
+        model.includes(queryValue) ||
+        color.includes(queryValue) ||
+        category.includes(queryValue) ||
+        title.includes(queryValue)
+    );//searchList
 
-    let selectListArr = [{id: '', title:'', img:'' },];
-    if(keyword!=="") {
-        selectListArr = product.filter(({title})=>
-        title.includes(searchParams.get('query'))
-    )} else {
-        selectListArr[0].title="없는 상품입니다.";
-    }//if
-
-//----------------------------------------------------------
-
-    return (
-    <> 
-        <div>
-            <h5>"{searchParams.get('query')}"검색 결과</h5>
-        </div><br />
-        <ProductFilter selectListArr={selectListArr}/>
-    </>
-)}//SearchResult
-
-
-
-function ProductFilter({selectListArr}) {
-    const productLi = selectListArr.map(({id, img, model, color, category, title, price})=>{
-        return <li key={id}><NavLink to={'/productPage?id='+id}>
+    searchList = searchList.map (({id, img, model, color, category, title, price})=> {
+        return <li key={id}><NavLink to={'/productDetails?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
             {color}<br />
             {category} <br />
@@ -43,17 +32,14 @@ function ProductFilter({selectListArr}) {
 
     return (
     <>
+        {searchParams.get('query')!==null &&
+            <SearchResult product={product} searchParams={searchParams} setSearchParams={setSearchParams}/>}
+        <Category />
+
         <div>
-            <button>전체</button>
-            <button>아우터</button>
-            <button>상의</button>
-            <button>하의</button>
-            <button>드레스</button>
-            
-            
             <ul className="productUl">
-                {productLi}
+                {searchList}
             </ul>
         </div>
     </>
-)}//productList
+)}//ProductList
