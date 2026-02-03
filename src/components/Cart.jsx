@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-import { 
-  FiUser, FiShoppingBag, FiPackage, FiEdit3, FiArrowRight, FiHome, 
-  FiTrash2, FiPlus, FiMinus, FiDatabase, FiTag, FiCheckCircle, FiHeart, FiShoppingCart
-} from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 
-export default function Cart(){
-  const CartPage = ({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscount, onAddToCart }) => {
+export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscountRate, onAddToCart }) {
   const navigate = useNavigate();
   const [selectedIds, setSelectedIds] = useState(cartItems.map(item => item.id));
+
+  useEffect(() => {
+    setSelectedIds(cartItems.map(item => item.id));
+  }, [cartItems.length]);
 
   const popularProducts = [
     { id: 901, name: "여리핏 루즈 가디건", price: 24500, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=200" },
@@ -17,20 +17,26 @@ export default function Cart(){
     { id: 904, name: "모던 체크 재킷", price: 59000, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=200" }
   ];
 
-  const toggleCheck = (id) => {
-    selectedIds.includes(id) ? setSelectedIds(selectedIds.filter(i => i !== id)) : setSelectedIds([...selectedIds, id]);
-  };
+  const selectedProductTotal = cartItems
+    .filter(item => selectedIds.includes(item.id))
+    .reduce((acc, cur) => acc + (cur.price * cur.count), 0);
 
-  const productTotal = cartItems.reduce((acc, cur) => acc + (cur.price * cur.count), 0);
-  const deliveryFee = (productTotal >= 80000 || productTotal === 0) ? 0 : 3000;
-  const finalTotal = productTotal - appliedDiscount + deliveryFee;
+  const discountAmount = selectedProductTotal * appliedDiscountRate;
+  const deliveryFee = (selectedProductTotal >= 80000 || selectedProductTotal === 0) ? 0 : 3000;
+  const finalTotal = selectedProductTotal - discountAmount + deliveryFee;
+  
+  // 적립 포인트 계산 (최종 결제 금액의 1%)
+  const rewardPoints = Math.floor(finalTotal * 0.01);
 
   return (
     <div className="container">
       <header className="header">
         <div className="inner">
-          <div className="logo" onClick={()=>navigate('/')}>V-CLO</div>
-          <div className="header-icons"><FiUser size={24} cursor="pointer" onClick={() => navigate('/myinfo')} /><FiShoppingBag size={24} style={{color:'#A67C52'}} /></div>
+          <div className="logo" onClick={() => navigate('/')}>V-CLO</div>
+          <div className="header-icons">
+            <FiUser size={24} cursor="pointer" onClick={() => navigate('/myPage')} />
+            <FiShoppingBag size={24} style={{ color: '#A67C52' }} />
+          </div>
         </div>
       </header>
       <main className="inner">
@@ -38,40 +44,57 @@ export default function Cart(){
         <div className="cart-container">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item-row">
-              <input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => toggleCheck(item.id)} className="checkbox"/>
-              <img src={item.img} alt="p" className="product-img" style={{width:'60px', height:'75px', objectFit:'cover'}} />
-              <div style={{flex:1}}><div style={{fontWeight:'bold', fontSize:'14px'}}>{item.name}</div><div>{item.price.toLocaleString()}원</div></div>
-              <div className="quantity-control">
-                <FiMinus onClick={()=>handleQuantityChange(item.id, -1)} cursor="pointer"/><span style={{margin:'0 10px'}}>{item.count}</span><FiPlus onClick={()=>handleQuantityChange(item.id, 1)} cursor="pointer"/>
+              <input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => {
+                selectedIds.includes(item.id) ? setSelectedIds(selectedIds.filter(i => i !== item.id)) : setSelectedIds([...selectedIds, item.id]);
+              }} className="checkbox" />
+              <img src={item.img} alt="p" className="product-img" style={{ width: '60px', height: '75px', objectFit: 'cover' }} />
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: 'bold', fontSize: '14px' }}>{item.name}</div>
+                <div>{item.price.toLocaleString()}원</div>
               </div>
-              <FiTrash2 onClick={()=>handleRemoveItem(item.id)} cursor="pointer" color="#ddd"/>
+              <div className="quantity-control">
+                <FiMinus onClick={() => handleQuantityChange(item.id, -1)} cursor="pointer" />
+                <span style={{ margin: '0 10px' }}>{item.count}</span>
+                <FiPlus onClick={() => handleQuantityChange(item.id, 1)} cursor="pointer" />
+              </div>
+              <FiTrash2 onClick={() => handleRemoveItem(item.id)} cursor="pointer" color="#ddd" />
             </div>
           ))}
-          
+
           <div className="price-summary">
-            <div className="price-row"><span>상품 합계</span><span>{productTotal.toLocaleString()}원</span></div>
-            {appliedDiscount > 0 && <div className="price-row" style={{color:'#ff4d4f'}}><span>할인 금액</span><span>- {appliedDiscount.toLocaleString()}원</span></div>}
-            <div className="price-row" style={{marginTop:'15px', paddingTop:'15px', borderTop:'2px solid #333'}}><span style={{fontWeight:'bold'}}>결제예정금액</span><span style={{fontWeight:'bold', fontSize:'24px', color:'#A67C52'}}>{finalTotal.toLocaleString()}원</span></div>
+            <div className="price-row"><span>선택 상품 합계</span><span>{selectedProductTotal.toLocaleString()}원</span></div>
+            {appliedDiscountRate > 0 && <div className="price-row" style={{ color: '#ff4d4f' }}><span>쿠폰 할인</span><span>- {discountAmount.toLocaleString()}원</span></div>}
+            <div className="price-row"><span>배송비</span><span>{deliveryFee.toLocaleString()}원</span></div>
+            
+            {/* 포인트 적립 안내 추가 */}
+            <div className="price-row" style={{ color: '#A67C52', fontSize: '13px', marginTop: '10px' }}>
+              <span>구매 적립 포인트 (1%)</span>
+              <span>+ {rewardPoints.toLocaleString()}P</span>
+            </div>
+
+            <div className="price-row" style={{ marginTop: '15px', paddingTop: '15px', borderTop: '2px solid #333' }}>
+              <span style={{ fontWeight: 'bold' }}>최종 결제 금액</span>
+              <span style={{ fontWeight: 'bold', fontSize: '24px', color: '#A67C52' }}>{finalTotal.toLocaleString()}원</span>
+            </div>
           </div>
-          
+
           <div className="order-btn-group">
-             <button className="btn-select" onClick={()=>alert('선택 상품을 주문합니다.')}>선택상품 주문하기</button>
-             <button className="btn-all" onClick={()=>alert('상품이 주문되었습니다.')}>전체상품 주문하기</button>
+            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}>주문하기</button>
           </div>
         </div>
 
-        <div className="popular-section" style={{marginTop:'50px', paddingBottom:'80px'}}>
-          <div style={{display:'flex', alignItems:'center', gap:'8px', marginBottom:'20px'}}>
-            <FiShoppingCart color="#A67C52"/>
-            <h3 style={{fontSize:'16px', margin:0}}>실시간 인기 급상승! 많이 담긴 상품</h3>
+        <div className="popular-section" style={{ marginTop: '50px', paddingBottom: '80px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+            <FiShoppingCart color="#A67C52" />
+            <h3 style={{ fontSize: '16px', margin: 0 }}>실시간 인기 급상승!</h3>
           </div>
           <div className="grid-4">
             {popularProducts.map(prod => (
               <div key={prod.id} className="pop-card">
                 <img src={prod.img} alt="popular" className="pop-img" />
-                <div style={{padding:'12px', textAlign:'center'}}>
-                  <div style={{fontSize:'13px', fontWeight:'500', marginBottom:'5px'}}>{prod.name}</div>
-                  <div style={{fontSize:'15px', fontWeight:'bold', color:'#A67C52', marginBottom:'10px'}}>{prod.price.toLocaleString()}원</div>
+                <div style={{ padding: '12px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '13px', fontWeight: '500' }}>{prod.name}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#A67C52' }}>{prod.price.toLocaleString()}원</div>
                   <button className="pop-add-btn" onClick={() => onAddToCart(prod)}>+ 담기</button>
                 </div>
               </div>
@@ -81,5 +104,4 @@ export default function Cart(){
       </main>
     </div>
   );
-};
 }
