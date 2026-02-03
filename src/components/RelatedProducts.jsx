@@ -3,10 +3,10 @@ import React from 'react';
 const RelatedProducts = () => {
   // 1. 화면에 보여줄 상품 데이터 (이름, 가격, 이미지주소)
   const productList = [
-    { id: 1, name: "키브 버튼 배색 레이어드 후드 가디건", price: "37.000원", img: "https://atimg.sonyunara.com/files/attrangs/goods/169087/696a6496e10ad.jpg" },
-    { id: 2, name: "홀린 브러쉬 배색 스트라이프 카라넥 버튼 긴팔 니트", price: "27,800원", img: "https://atimg.sonyunara.com/files/attrangs/goods/168563/6921c8cc04c8f.jpg" },
-    { id: 3, name: "헤어리 솔잎퍼 타이 세트 가디건", price: "28,800", img: "https://atimg.sonyunara.com/files/attrangs/goods/169071/696a270a8c383.jpg" },
-    { id: 4, name: "올리아 모직 히든밴딩 기모 부츠컷 슬랙스", price: "35,500", img: "https://atimg.sonyunara.com/files/attrangs/goods/168931/6956b65c49d15.jpg" },
+    { id: 1, name: "키브 버튼 배색 레이어드 후드 가디건", price: "37.000원", img: "/images/blackYak-ivory.jpg" },
+    { id: 2, name: "홀린 브러쉬 배색 스트라이프 카라넥 버튼 긴팔 니트", price: "27,800원", img: "/images/blackYak-mint.jpg" },
+    { id: 3, name: "헤어리 솔잎퍼 타이 세트 가디건", price: "28,800", img: "/images/blackYak-pink.jpg" },
+    { id: 4, name: "올리아 모직 히든밴딩 기모 부츠컷 슬랙스", price: "35,500", img: "/images/blackYak-black.jpg" },
   ];
 
   return (

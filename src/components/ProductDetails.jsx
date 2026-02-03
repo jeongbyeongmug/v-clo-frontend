@@ -4,13 +4,17 @@ import Review from '../components/Review.jsx';
 import Qna from '../components/QnA.jsx';
 import RelatedProducts from '../components/RelatedProducts.jsx';
 import '../styles/Review.css';
+import { Link, useSearchParams } from 'react-router-dom';
 
-export default function ProductDetails() {
+export default function ProductDetail() {
+  const [searchParams] = useSearchParams();
+  const productId = searchParams.get('id'); 
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('상품정보');
-  const [mainImage, setMainImage] = useState("https://atimg.sonyunara.com/files/attrangs/goods/168875/list13_694ac197257d3.gif"); // 메인 배너 이미지
+
+  const [mainImage, setMainImage] = useState("/images/blackYak-jacket.jpg");
   const [selectedColorName, setSelectedColorName] = useState("Ivory(model)");
- 
 
   const benefits = [
     { id: '01', title: '첫 회원가입', desc: '중복 5천원 할인' },
@@ -21,35 +25,37 @@ export default function ProductDetails() {
   ];
 
   const colorOptions = [
-    { name: 'black', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847263_0.png' },
-    { name: 'navy', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847262_0.png' },
-    { name: 'beige', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847574_0.png' },
-    { name: 'mocha', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847492_0.png' },
+    { name: 'Black', src: '/images/blackYak-black.jpg' },
+    { name: 'Ivory', src: '/images/blackYak-ivory.jpg' },
+    { name: 'Mint', src: '/images/blackYak-mint.jpg' },
+    { name: 'Pink', src: '/images/blackYak-pink.jpg' },
   ];
 
   const detailBtnText = isOpen ? "상세정보 닫기 ▲" : "상세정보 보기 ▼";
   const detailClass = isOpen ? "details-content open" : "details-content";
 
   return (
-    <div className="App">
+    <div className="productDetails-container">
       <header className="main-header">
         <div className="container"><h2>V-CLO</h2></div>
       </header>
 
       <main className="container">
+      
+
         <section className="product-top">
           <div className="product-image">
-            <img src={mainImage} alt="상품 이미지" />
+            <img src={mainImage} alt="상품 이미지" onError={(e) => e.target.src = "https://via.placeholder.com/400x500?text=No+Image"} />
           </div>
 
           <div className="product-info">
-            <p className="product-code">상품번호: nt5392</p>
-            <h2 className="product-name">모렌 램스울 크롭 라운드 니트</h2>
+            <p className="product-code">상품번호: 1BYJKS3506 M</p>
+            <h2 className="product-name">블랙야크자켓</h2>
 
             <div className="price-row">
-              <span className="original">30,000원</span>
-              <span className="sale">22,800원</span>
-              <span className="discount">24%</span>
+              <span className="original">209,300원</span>
+              <span className="sale">198,830원</span>
+              <span className="discount">5%</span>
             </div>
 
             <div className="badges">
@@ -77,14 +83,12 @@ export default function ProductDetails() {
               <div className="selection-row">
                 <div className="label">옵션</div>
                 <div className="content">
-                  {/* 수정: 선택된 컬러 이름이 나오도록 변경 */}
                   <p className="selected-name">{selectedColorName}</p>
                   <div className="color-select">
                     {colorOptions.map((color) => (
-                      <div 
-                        key={color.name} 
+                      <div
+                        key={color.name}
                         className="select"
-                        /* 클릭 시 이미지와 이름을 변경하는 로직 추가 */
                         onClick={() => {
                           setMainImage(color.src);
                           setSelectedColorName(color.name);
@@ -103,7 +107,7 @@ export default function ProductDetails() {
                   <div className="size-buttons">
                     {['S', 'M', 'L', 'XL'].map(size => (
                       <button key={size} className="btn-size">
-                        <img src="https://cdn-icons-png.flaticon.com/512/754/754850.png" className="icon-delivery" alt="delivery" />
+                        <img src="/images/deliveryMan.jpg" className="icon-delivery" alt="delivery icon" />
                         {size} [즉시출고]
                       </button>
                     ))}
@@ -150,17 +154,15 @@ export default function ProductDetails() {
                 <div className="info-row">
                   <div className="info-label">소재</div>
                   <div className="info-value">
-                    <p className="sub-text">램스울(10%) 폴리,폴리에스터(67%) 나일론(10%)</p>
-                    <p className="sub-text">아크릴(10%) 스판,스판덱스(3%)</p>
+                    <p className="sub-text">겉감: 폴리에스터 100%</p>
+                    <p className="sub-text">취급시 주의사항: <br />제품 라벨(Label) 및 태그(Tag) 참조</p>
                   </div>
                 </div>
 
                 <div className="info-row">
-                  <div className="info-label">모델, 상품<br />사이즈 정보</div>
+                  <div className="info-label">모델 정보</div>
                   <div className="info-value">
-                    <p className="sub-text">정윤 Height : 162cm Top : 44반/S Pants : 26inch/s Shoes : 235mm</p>
-                    <p className="sub-text">주연 Height : 167cm Top : 44/S Pants : 25inch/S Shoes : 245mm</p>
-                    <p className="sub-text">아연 Height : 161cm Top : 44/S Pants : 25inch/S Shoes : 225mm</p>
+                    <p className="sub-text">아이유 162cm </p>
                   </div>
                 </div>
               </div>
@@ -168,21 +170,22 @@ export default function ProductDetails() {
           </div>
         </section>
 
-        {/* 하단 탭 메뉴 영역 */}
         <section className="product-detail-tabs">
           <ul className="tab-menu">
-            <li onClick={() => setActiveTab('상품정보')} className={activeTab === '상품정보' ? 'active' : ''}>상품정보</li>
-            <li onClick={() => setActiveTab('관련상품')} className={activeTab === '관련상품' ? 'active' : ''}>관련상품</li>
-            <li onClick={() => setActiveTab('리뷰')} className={activeTab === '리뷰' ? 'active' : ''}>리뷰</li>
-            <li onClick={() => setActiveTab('Q&A')} className={activeTab === 'Q&A' ? 'active' : ''}>Q&A</li>
-            <li onClick={() => setActiveTab('배송/환불')} className={activeTab === '배송/환불' ? 'active' : ''}>배송/환불</li>
+            {['상품정보', '관련상품', '리뷰', 'Q&A', '배송/환불'].map(tab => (
+              <li
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={activeTab === tab ? 'active' : ''}
+              >
+                {tab}
+              </li>
+            ))}
           </ul>
         </section>
 
-        {/* --- 여기 탭 전환 구간 --- */}
         {activeTab === '상품정보' && (
           <>
-            {/* 멤버십 영역 */}
             <section className="membership-section">
               <div className="membership-header">
                 <h2 className="membership-title">Membership</h2>
@@ -206,47 +209,11 @@ export default function ProductDetails() {
               </button>
 
               <div className={detailClass}>
-                <div style={{ padding: '20px 0', backgroundColor: '#fff' }}>
-                  {/* 세트 1 */}
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/attrangs/story/nt5392/kr/content_08.jpg" alt="상세이미지1" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>첫 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766025761_12.jpg" alt="상세이미지2" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>두 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766478227_8.jpg" alt="상세이미지3" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>세 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766121986_4.jpg" alt="상세이미지4" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>네 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/attrangs/story/nt5392/kr/content_09.jpg" alt="상세이미지5" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>다섯 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
-                  </div>
+                <div style={{ padding: '20px 0', backgroundColor: '#fff', textAlign: 'center' }}>
+                  <img src="/images/blackYak-jacket.jpg" alt="상세1" style={{ width: '100%', maxWidth: '800px' }} />
+                  <img src="/images/blackYak-jacket.jpg" alt="상세2" style={{ width: '100%', maxWidth: '800px' }} />
+                  <img src="/images/blackYak-jacket.jpg" alt="상세2" style={{ width: '100%', maxWidth: '800px' }} />
+                  <img src="/images/blackYak-jacket.jpg" alt="상세2" style={{ width: '100%', maxWidth: '800px' }} />
                 </div>
               </div>
             </section>
@@ -255,80 +222,36 @@ export default function ProductDetails() {
 
         {activeTab === '리뷰' && <Review />}
         {activeTab === '관련상품' && <RelatedProducts />}
-        {activeTab === 'Q&A' && <Qna />}
-        {activeTab === '배송/환불' && <div style={{padding: '50px', textAlign: 'center'}}>무료 배송 및 7일 이내 환불 가능합니다.</div>}
+        {activeTab === 'Q&A' && <QnA />}
+        {activeTab === '배송/환불' && <div style={{ padding: '100px 0', textAlign: 'center' }}>무료 배송 및 7일 이내 환불 가능합니다.</div>}
+
+        <ul className="product_list2">
+          {[
+            { id: 'p1', img: '/images/blackYak-black.jpg', name: '루디안 스트라이프 울 니트', price: '19,320', discount: '57%' },
+            { id: 'p2', img: '/images/blackYak-pink.jpg', name: '루디안 스트라이프 울 니트', price: '19,320', discount: '57%' },
+            { id: 'p3', img: '/images/blackYak-mint.jpg', name: '루디안 스트라이프 울 니트', price: '19,320', discount: '57%' },
+            { id: 'p4', img: '/images/blackYak-ivory.jpg', name: '루디안 스트라이프 울 니트', price: '19,320', discount: '57%' },
+          ].map(item => (
+            <li className="product_item2" key={item.id}>
+              <Link to={`/Productpage?id=${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div className="product_box2">
+                  <div className="img_area">
+                    <img src={item.img} alt={item.name} />
+                  </div>
+                  <div className="info_area">
+                    <div className="price_top">
+                      <span className="discount">{item.discount}</span>
+                      <span className="origin_price">40,000</span>
+                    </div>
+                    <div className="sale_price">{item.price}원</div>
+                    <p className="item_name">{item.name}</p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </main>
-
-      {/* Footer 바로 위 상품 리스트 */}
-      <ul className="product_list2">
-        <li className="product_item2">
-          <div className="product_box2">
-            <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168953/list1_694dafd0067bd.gif" alt="상품 이미지1" />
-            </div>
-            <div className="info_area">
-              <div className="price_top">
-                <span className="discount">57%</span>
-                <span className="origin_price">45,000</span>
-              </div>
-              <div className="sale_price">19,320원</div>
-              <p className="item_name">루디안 스트라이프 울 니트</p>
-              <div className="item_tags">BEST | 오늘출발</div>
-            </div>
-          </div>
-        </li>
-
-        <li className="product_item2">
-          <div className="product_box2">
-            <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168929/list1_6952e855210f2.gif" alt="상품 이미지2" />
-            </div>
-            <div className="info_area">
-              <div className="price_top">
-                <span className="discount">34%</span>
-                <span className="origin_price">40,000</span>
-              </div>
-              <div className="sale_price">26,460원</div>
-              <p className="item_name">헨쉬 터틀넥 셔링 드레이프 기모 니트 티셔츠</p>
-              <div className="item_tags">BEST | 오늘출발</div>
-            </div>
-          </div>
-        </li>
-
-        <li className="product_item2">
-          <div className="product_box2">
-            <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168923/list1_6954140d2291c.gif" alt="상품 이미지3" />
-            </div>
-            <div className="info_area">
-              <div className="price_top">
-                <span className="discount">40%</span>
-                <span className="origin_price">50,000</span>
-              </div>
-              <div className="sale_price">30,240원</div>
-              <p className="item_name">루멘 알파카 울 케이블 루즈핏 브이넥 니트</p>
-              <div className="item_tags">BEST | 오늘출발</div>
-            </div>
-          </div>
-        </li>
-
-        <li className="product_item2">
-          <div className="product_box2">
-            <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168917/list1_694ef4f0f14dd.gif" alt="상품 이미지4" />
-            </div>
-            <div className="info_area">
-              <div className="price_top">
-                <span className="discount">34%</span>
-                <span className="origin_price">57,000</span>
-              </div>
-              <div className="sale_price">37,380원</div>
-              <p className="item_name">니쥬 홀가먼트 울 헤어리 폴라 터틀넥 니트</p>
-              <div className="item_tags">BEST | 오늘출발</div>
-            </div>
-          </div>
-        </li>
-      </ul>
 
       <footer className="footer">
         <div className="container footer-grid">
@@ -361,9 +284,9 @@ export default function ProductDetails() {
           <div className="footer-section">
             <h3 className="footer-title">SOCIAL</h3>
             <div className="social-icons">
-              <a href="#instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG" className="sns-img" /></a>
-              <a href="#facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB" className="sns-img" /></a>
-              <a href="#youtube"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT" className="sns-img" /></a>
+              <a href="#instagram"><img src="/images/instagram.jpg" alt="IG" className="sns-img" /></a>
+              <a href="#facebook"><img src="/images/facebook.jpg" alt="FB" className="sns-img" /></a>
+              <a href="#youtube"><img src="/images/youtube.jpg" alt="YT" className="sns-img" /></a>
             </div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHRYwEqaN2sWvraNAIGQrfBbpXItgO0juNYA&s" className="companyImg" alt="company"></img>
           </div>
