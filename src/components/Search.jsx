@@ -17,9 +17,6 @@ export default function Search() {
         if (textVal.trim()==="") return;
         else { const query = textVal.toLowerCase();
             navigate(`/productList?query=${query}&page=1`);
-            // <Routes>
-            //     <Route path='/ProductList' element={<ProductList />} />
-            // </Routes>
         }
     }
     const searchLi = product
@@ -27,7 +24,7 @@ export default function Search() {
             title.toLowerCase().includes(textVal.toLowerCase())
     ).map( ({id,title}) => (
         <li key={id} className="searchLi">
-            <NavLink to={`/productList?query=${title}&page=1`}> 
+            <NavLink to={`/productList?query=${title}&page=1`} className="nav-link">
                 {title} 
             </NavLink>
         </li>
@@ -54,3 +51,5 @@ export default function Search() {
         )}
     </div>
 )}//Search
+
+

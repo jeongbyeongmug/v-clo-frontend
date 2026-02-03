@@ -1,6 +1,7 @@
 import { useProduct } from '../context/ProductContext';
 import {NavLink,Routes,Route} from 'react-router-dom';
-import ProductList from './ProductDetails';
+import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
 import Home from './Home';
 import SideBar from '../components/SideBar';
  './Home';
@@ -13,6 +14,9 @@ export default function Section() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/productList/*' element={<ProductList />} />
+                <Route path='/productDetails/*' element={<ProductDetails />} />
+                
+
             </Routes>
         </div>
         <div className="chatSupport">
