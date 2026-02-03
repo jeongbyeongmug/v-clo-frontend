@@ -13,11 +13,16 @@ import FindPassword from './components/FindPassword';
 import Join from './components/Join';
 
 import Cart from './components/Cart';
+import MyPage from './components/MyPage';
+import ProductDetail from './components/ProductDetails';
+
+import './styles/style02.css'
 
 
 
 function App() {
-
+  const navigate = useNavigate(); //Hook useNavigate 정의
+  
   useEffect(() => { // 테스트용 회원정보 (아이디, 패스워드)
     localStorage.setItem('userInfo'
       , JSON.stringify([
@@ -25,7 +30,6 @@ function App() {
         {userId: 'vclo', userPassword: '55555', userPhone: '01055555555'}
       ]))});
 
-  const navigate = useNavigate(); //Hook useNavigate 정의
 
   const [loginInfo, setLoginInfo] = useState({isLogin:false, id:'', password:''}); //로그인 상태관리 객체 정의
   const {isLogin, id, password} = loginInfo; //로그인 상태관리 구조분해
@@ -92,11 +96,54 @@ function App() {
     } else alert(`인증 번호가 올바르지 않습니다. 다시 입력해 주세요.`);
   }//onCheckOtpSubmit
 
-  
+  const onJoinSubmit = (name, id, password, phone, birth, smsAccept, email, emailAccept, referrerId) => 
+    {
+      const join = JSON.parse(localStorage.getItem('userInfo'))
 
+      const nameCheck = /^[가-힣]{2,}$/.test(name); //한글만 허용 (최소 2자 이상) [ㅂㄴ => X, 글자로 입력]
+      const idCheck = /^[a-zA-Z0-9]{5,15}$/.test(id); //대소문자 영문과 숫자만 허용 (5~15자)
+      
+      const phoneCheck = phone.length===11 //11자인 경우 혀용
+      let joinCheck = false;
+      if(nameCheck && phoneCheck && idCheck) { //id, phone, id 각각 규칙에 맞게 작성됬다면 실행
+        joinCheck = join.some(({userName, userId, userPhone}) => userName===name || userId===id || userPhone===phone); 
+      } // 기본 정보에 id, phone, id 중 하나라도 중복된다면 true 반환
+      
+      const passwordCheck = /^(?=.*[a-zA-Z])(?=.*\d).{3,}$/.test(password); //영문,숫자 조합이여야 true (3자 이상)
+      
+      const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(email); //@ 앞뒤 특수문자,한글 제외, @ 뒤에 마침표(.)가 정확히 하나만 존재 + 9글자 이상
+      
+      const referrerIdCheck = join.some(({userId}) => userId===referrerId || referrerId==''); //추천인 확인
+      // console.log(join);
+      console.log(joinCheck)
+      const error = [{check: nameCheck, rsn:'이름: 한글로만 입력하세요'}, {check: idCheck, rsn:'아이디는 영문과 숫자만 사용가능 5글자 이상 입력해야합니다'}
+        , {check: passwordCheck, rsn: '패스워드: 영문으로 입력하시고, 숫자 1글자 이상을 포함 바랍니다'}, {check: phoneCheck, rsn:'잘못된 전화번호 형식입니다.'}
+        , {check: !joinCheck, rsn:'이미 회원가입된 아이디, 전화번호 입니다.'},  {check: emailCheck, rsn:'잘못된 이메일 형식입니다.'}
+        , {check: referrerIdCheck, rsn:'유효하지 않은 추천인입니다.'}]
+
+      //회원정보 넣기 !joinCheck && referrerIdCheck && acceptCheck
+      if(!joinCheck && passwordCheck && emailCheck && referrerIdCheck) {
+        join.push({userName: name, userId: id, userPassword: password, userPhone: phone, userBirth: birth
+                  , userSmsAccept: smsAccept, userEmail: email, userEmailAccept: emailAccept, userReferrerId: referrerId});
+        localStorage.setItem('userInfo', JSON.stringify(join))
+        alert(`회원가입 성공`)
+        navigate('/login');
+      } else {
+        for(const {check, rsn} of error) {
+          {check ? '' : alert(rsn)}
+        }
+      } //if_else
+    }//onJoinSubmit
+
+  const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [cartItems, setCartItems] = useState([
-    {id:101, name:'보송폭닥 크롭 니트', price:22800, count:1, img:'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200'}
+    { id: 101, name: '보송폭닥 크롭 니트', price: 22800, count: 1, img: 'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200' }
   ]);
+
+  useEffect(() => {
+    const saved = JSON.parse(sessionStorage.getItem('loginInfo'));
+    if (saved) setLoginInfo(saved);
+  }, []);
 
   const handleAddToCart = (product) => {
     if (cartItems.find(item => item.id === product.id)) {
@@ -107,7 +154,15 @@ function App() {
     alert('장바구니에 상품을 담았습니다.');
   };
 
-  const [appliedDiscount] = useState(0);
+  const handleApplyCoupon = (coupon) => {
+    if (coupon.name.includes('50%')) {
+      setAppliedDiscount(0.5);
+      alert('50% 할인이 적용되었습니다!');
+    } else {
+      setAppliedDiscount(0.1);
+      alert('쿠폰이 적용되었습니다.');
+    }
+  };
 
   return (
     <Routes>
@@ -125,19 +180,18 @@ function App() {
       <Route path="/login/*" element={<Login onLoginSubmit={onLoginSubmit}/>} />
       <Route path="/login/find-id" element={<FindId onPhoneSubmit={onPhoneSubmit} onOtpSubmit={onOtpSubmit} otpInfo={otpInfo} setOtpInfo={setOtpInfo} findId={findId}/>} />
       <Route path="/login/find-password" element={<FindPassword />} />
-      <Route path="/login/join" element={<Join />} />
+      <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
-      
+      {/* 제품 상세 페이지 */}
+      <Route path="/Productpage" element={<ProductDetail />} />
+      <Route path="*" element={<ProductDetail />} />
+
+
       {/* 장바구니, 마이페이지 */}
-      {/* < element={loginInfo.isLogin ? 
-        <Cart cartItems={cartItRoute path="/cart"ems} onAddToCart={handleAddToCart} handleQuantityChange={(id,d)=>setCartItems(prev=>prev.map(i=>i.id===id?{...i,count:Math.max(1,i.count+d)}:i))} handleRemoveItem={id=>setCartItems(prev=>prev.filter(i=>i.id!==id))} appliedDiscount={appliedDiscount} /> 
-        : <Navigate to="/login" />} /> */}
-
-      {/*<Route path="/myinfo" element={loginInfo.isLogin ? 
-        <MyPage id={loginInfo.id} coupons={[{id:1, name:'50% 쿠폰'}]} handleApplyCoupon={()=>alert('적용!')} /> 
-        : <Navigate to="/login" />} />
-      
-      <Route path="/login" element={<Login onLoginSubmit={(id)=>{ const d={isLogin:true, id:id}; sessionStorage.setItem('loginInfo',JSON.stringify(d)); setLoginInfo(d); navigate('/'); }}/>} /> */}
+      <Route path="*" element={<><Header /><Nav isLogin={loginInfo.isLogin} onLogout={() => { sessionStorage.clear(); setLoginInfo({ isLogin: false }); navigate('/'); }} /><Section /><Footer /></>} />
+      <Route path="/cart" element={loginInfo.isLogin ? <Cart cartItems={cartItems} onAddToCart={handleAddToCart} handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id ? { ...i, count: Math.max(1, i.count + d) } : i))} handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscountRate={appliedDiscount} /> : <Navigate to="/login" />} />
+      <Route path="/myPage" element={loginInfo.isLogin ? <MyPage id={loginInfo.id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} /> : <Navigate to="/login" />} />
+      <Route path="/login" element={<Login onLoginSubmit={(id) => { const d = { isLogin: true, id: id }; sessionStorage.setItem('loginInfo', JSON.stringify(d)); setLoginInfo(d); navigate('/'); }} />} />
     </Routes>
   );
 }
