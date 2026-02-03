@@ -20,7 +20,7 @@ export default function Login({onLoginSubmit}) {
   return (
     <div className='login-container'>
     <header>
-    <div className='backBtn' onClick={() => {navigate(-1)}}><IoChevronBack /></div><br />
+    <div className='backBtn' onClick={() => {navigate('/')}}><IoChevronBack /></div><br />
     </header>
 
     <nav>
