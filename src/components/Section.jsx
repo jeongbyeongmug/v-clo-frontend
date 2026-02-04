@@ -4,7 +4,6 @@ import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import Home from './Home';
 import SideBar from '../components/SideBar';
- './Home';
 
 export default function Section() {
     const { product } = useProduct();
@@ -14,7 +13,7 @@ export default function Section() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/productList/*' element={<ProductList />} />
-                <Route path='/productDetails/*' element={<ProductDetails />} />
+                <Route path='/productDetail/*' element={<ProductDetails />} />
                 
 
             </Routes>
