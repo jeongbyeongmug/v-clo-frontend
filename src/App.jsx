@@ -180,7 +180,7 @@ function App() {
               <Nav isLogin={isLogin} onLogout={onLogout} />
             )}
            </div>
-           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount}/>
+           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount} setCartItems={setCartItems}/>
           <Footer />
         </div>
       } />
