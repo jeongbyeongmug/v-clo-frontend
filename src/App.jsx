@@ -12,8 +12,8 @@ import FindId from './components/FindId';
 import FindPassword from './components/FindPassword';
 import Join from './components/Join';
 
-import Cart from './components/Cart';
-import MyPage from './components/MyPage';
+
+
 import ProductDetail from './components/ProductDetails';
 
 import PayMent from './components/PayMent';
@@ -26,11 +26,14 @@ function App() {
   const navigate = useNavigate(); //Hook useNavigate 정의
   
   useEffect(() => { // 테스트용 회원정보 (아이디, 패스워드)
+    if (!localStorage.getItem('userInfo')) {
     localStorage.setItem('userInfo'
       , JSON.stringify([
-        {userId: 'admin', userPassword: '1234', userPhone: '01111111111'},
-        {userId: 'vclo', userPassword: '55555', userPhone: '01055555555'}
-      ]))});
+        {userName:'에드민', userId:'admin', userPassword:'1234', userPhone:'01111111111', userBirth:'2012-01-01'
+          , userSmsAccept:'Y', userEmail:'aaaa@naver.com', userEmailAccept:'Y', userReferrerId:'에드민'},
+        {userName:'브이클로', userId:'vclo', userPassword:'55555', userPhone:'05555555555', userBirth:'1940-12-31'
+          , userSmsAccept:'Y', userEmail:'aaaa@naver.com', userEmailAccept:'Y', userReferrerId:'admin'},
+      ]))}}, []);
 
 
   const [loginInfo, setLoginInfo] = useState({isLogin:false, id:'', password:''}); //로그인 상태관리 객체 정의
@@ -177,10 +180,9 @@ function App() {
               <Nav isLogin={isLogin} onLogout={onLogout} />
             )}
            </div>
-           <Section />
+           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount}/>
           <Footer />
         </div>
-      
       } />
        
       {/* 로그인 화면: 깔끔하게 로그인 컴포넌트만! */}
@@ -195,8 +197,8 @@ function App() {
 
 
       {/* 장바구니, 마이페이지 */}
-      <Route path="/cart" element={loginInfo.isLogin ? <Cart cartItems={cartItems} onAddToCart={handleAddToCart} handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id ? { ...i, count: Math.max(1, i.count + d) } : i))} handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscountRate={appliedDiscount} /> : <Navigate to="/login" />} />
-      <Route path="/myPage" element={loginInfo.isLogin ? <MyPage id={loginInfo.id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} /> : <Navigate to="/login" />} />
+      
+      
       <Route path="/payMent" element={loginInfo.isLogin ? <PayMent /> : <Navigate to="/login" />} />
     </Routes>
   );
