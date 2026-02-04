@@ -6,23 +6,9 @@ body { font-family: 'Pretendard', sans-serif; color: #333; line-height: 1.6; bac
 .underline { text-decoration: underline; }
 
 /* 상품 상단 메인 배너 이미지 크기 */
-.product-top { 
-  display: flex; 
-  gap: 50px; 
-  margin-bottom: 50px; 
-  flex-wrap: wrap; 
-  align-items: flex-start; 
-}
-
-.product-image { 
-  width: 470px;       
-  height: 600px;      
-  min-width: 350px;   
-  border-radius: 8px;
-  overflow: hidden;   
-  background-color: #f8f8f8; 
-  flex-shrink: 0;     
-}
+.product-top { display: flex; gap: 50px; margin-bottom: 50px; flex-wrap: wrap; align-items: flex-start; }
+.product-image { width: 470px; height: 600px; min-width: 350px; border-radius: 8px;overflow: hidden;   
+                 background-color: #f8f8f8; flex-shrink: 0; }
 
 .product-image img { 
   width: 100%; 
@@ -37,13 +23,18 @@ body { font-family: 'Pretendard', sans-serif; color: #333; line-height: 1.6; bac
   min-width: 350px; 
 }
 
-/* 텍스트 스타일 */
-.product-code { color: #aaa; font-size: 13px; }
-.product-name { font-size: 26px; margin: 10px 0 15px; font-weight: 700; }
-.original { text-decoration: line-through; color: #bbb; margin-right: 10px; }
-.sale { font-size: 24px; font-weight: 800; color: #222; }
-.discount { color: #ff4d4f; font-weight: bold; font-size: 20px; margin-left: 5px; }
+/* 텍스트 스타일 왼쪽 정렬 및 간격 제어 */
+.price-row { 
+  display: flex; 
+  align-items: baseline; 
+  justify-content: flex-start; 
+  gap: 8px; 
+  margin-bottom: 10px;
+}
 
+.original { text-decoration: line-through; color: #bbb; margin: 0; }
+.sale { font-size: 24px; font-weight: 800; color: #222; margin: 0; }
+.discount { color: #ff4d4f; font-weight: bold; font-size: 20px; margin: 0; }
 .badges { display: flex; gap: 6px; margin: 20px 0; }
 .badge { background: #f1f1f1; font-size: 11px; padding: 4px 10px; border-radius: 4px; color: #666; }
 
@@ -56,10 +47,10 @@ body { font-family: 'Pretendard', sans-serif; color: #333; line-height: 1.6; bac
 .sub-text2 { font-size: 14px; color:#d4a373; } 
 
 /* 옵션 선택 */
-.option-selection { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+.option-selection { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 25px; text-align: left;}
 .selection-row { display: flex; margin-bottom: 15px; }
 .selection-row:last-child { margin-bottom: 0; }
-.selection-row .label { width: 70px; font-size: 14px; font-weight: bold; padding-top: 5px; }
+.selection-row .label { width: 70px; font-size: 14px; font-weight: bold; padding-top: 5px;  }
 .color-select { display: flex; gap: 8px; margin-top: 10px; }
 .select { width: 50px; height: 50px; border: 1px solid #ddd; cursor: pointer; border-radius: 4px; overflow: hidden; }
 .select img { width: 100%; height: 100%; object-fit: cover; }
@@ -220,4 +211,86 @@ body { font-family: 'Pretendard', sans-serif; color: #333; line-height: 1.6; bac
     flex-wrap: wrap !important;
     height: auto !important;
     margin-bottom: 50px !important;
+}
+
+/* 구매하기 옵션 창 */
+.selected-items-list {
+  margin: 20px 0;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border: 2px solid #333; 
+  border-radius: 8px;
+}
+
+.selected-item-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 우측 컨트롤 그룹 (수량+가격+삭제) */
+.item-control-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 5. 수량 조절 버튼: 기호(-, +) */
+.count-btn-group {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 30px; /* 높이 고정 */
+}
+
+.count-btn-group button {
+  width: 28px;
+  height: 100%; /* 버튼 높이를 박스에 맞춤 */
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1; 
+}
+
+.count-btn-group span {
+  width: 30px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 6. 가격 및 삭제 버튼 */
+.item-price-delete {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.delete-x {
+  border: none;
+  background: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
 }
