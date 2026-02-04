@@ -58,8 +58,8 @@ export default function Nav({isLogin, onLogout}) {
                 :
                 <div><NavLink to='/login'>로그인</NavLink></div>
             }&nbsp;
-            <div><NavLink to="/cart">🛒</NavLink></div>&nbsp;
-            <div><NavLink to="/myPage">👤</NavLink></div>&nbsp;
+            <div>{isLogin ? <NavLink to="/cart">🛒</NavLink> : <NavLink to="/login">🛒</NavLink>}</div>&nbsp;
+            <div>{isLogin ? <NavLink to="/myPage">👤</NavLink> : <NavLink to="/login">👤</NavLink>}</div>&nbsp; 
         </div>
       </div>
     </div>

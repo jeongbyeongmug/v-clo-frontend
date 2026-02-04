@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 
 export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscountRate, onAddToCart }) {
@@ -79,7 +79,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
           </div>
 
           <div className="order-btn-group">
-            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}>주문하기</button>
+            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}><NavLink to ='/payMent'>주문하기</NavLink></button>
           </div>
         </div>
 
