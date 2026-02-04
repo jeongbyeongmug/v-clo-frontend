@@ -91,6 +91,7 @@ body { font-family: 'Pretendard', sans-serif; color: #333; line-height: 1.6; bac
 
 .naverPay-event-row { font-size: 12px; padding: 10px 0; border-bottom: 1px solid #eee; margin-bottom: 10px; }
 .naverPay-event-tag { color: #00c73c; font-weight: bold; border: 1px solid #00c73c; padding: 1px 4px; border-radius: 2px; margin-right: 6px; }
+.naverPay-event-text { text-align: left; } 
 
 /* 박스 내부 상세 스펙 (소재, 모델) */
 .spec-row { display: flex; padding: 8px 0; font-size: 12px; }
