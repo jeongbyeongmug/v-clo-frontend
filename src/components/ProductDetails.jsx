@@ -3,14 +3,11 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import Review from '../components/Review.jsx';
 import Qna from '../components/QnA.jsx';
 import RelatedProducts from '../components/RelatedProducts.jsx';
-import Header from '../components/Header.jsx';
-
 
 import Footer from '../components/Footer.jsx'; 
 import '../styles/Review.css';
 import '../styles/ProductDetails.css';
 import SideBar from './SideBar.jsx';
-import Nav from './Nav.jsx';
 
 export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
   const [searchParams] = useSearchParams(); 
@@ -120,8 +117,6 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
 
   return (
     <div className="product-details-page">
-      <Header />
-      <Nav/>
       <SideBar/>
 
       <main className="container">

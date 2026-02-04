@@ -13,9 +13,6 @@ import FindPassword from './components/FindPassword';
 import Join from './components/Join';
 
 
-
-import ProductDetail from './components/ProductDetails';
-
 import PayMent from './components/PayMent';
 
 import './styles/style02.css'
@@ -192,12 +189,7 @@ function App() {
       <Route path="/login/find-password" element={<FindPassword />} />
       <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
-      {/* 제품 상세 페이지 */}
-      <Route path="/productDetail" element={<ProductDetail isLogin={isLogin}/>} />
-      <Route path="*" element={<ProductDetail />} />
-
-
-      {/* 장바구니, 마이페이지 */}
+      {/* 마이페이지 */}
       
       
       <Route path="/payMent" element={loginInfo.isLogin ? <PayMent /> : <Navigate to="/login" />} />
