@@ -9,7 +9,7 @@
   background-color: white;
   border-bottom: 1px solid #f0f0f0;
   box-sizing: border-box;
-  
+  flex: 0 0 100%;
   min-width: 1000px;
 }
 
