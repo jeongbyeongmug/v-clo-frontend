@@ -29,7 +29,7 @@ export default function ProductList() {
         return <li key={id}><NavLink to={'/productDetail?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
             {price}<br />
-            <span className="model-btn">{model}</span>{model}<br />
+            <span className="model-span">{model}</span>{model}<br />
             {title}<br />
             {category} <br />
             {color}

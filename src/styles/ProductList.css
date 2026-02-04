@@ -20,7 +20,7 @@ ul {
     color: #93867f;
 }
 
-.model-btn {
+.model-span {
     width: 25px;
     margin-right: 3px;
     display: inline-block;
@@ -31,6 +31,13 @@ ul {
     font-size: 0.3em;
     color:#f9f2f2;
 }
+
+.price-span {
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: #56473f
+}
+
 
 .searchResult {
     position: relative;
