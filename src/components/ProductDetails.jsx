@@ -3,8 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import Review from '../components/Review.jsx';
 import Qna from '../components/QnA.jsx';
 import RelatedProducts from '../components/RelatedProducts.jsx';
-import Header from '../components/Header.jsx'; 
-import Nav from '../components/Nav.jsx';         
+import Header from '../components/Header.jsx';      
 
 import Footer from '../components/Footer.jsx'; 
 import '../styles/Review.css';
@@ -120,7 +119,6 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
   return (
     <div className="product-details-page">
       <Header />
-      <Nav isLogin={isLogin} onLogout={onLogout} />
       <SideBar/>
 
       <main className="container">

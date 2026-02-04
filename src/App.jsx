@@ -178,9 +178,7 @@ function App() {
         <div className='app-container'>
           <div className='sticky-top'>
             <Header />
-            {location.pathname === "/" && (
-              <Nav isLogin={isLogin} onLogout={onLogout} />
-            )}
+            <Nav isLogin={isLogin} onLogout={onLogout} />
            </div>
            <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount} setCartItems={setCartItems}/>
            <SideBar isLogin={isLogin}/>
