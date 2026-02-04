@@ -54,11 +54,11 @@ export default function Home() {
                     <li key={id}>
                         <NavLink to={'/productDetail?id=' + id}>
                             <img src={img} alt={title} className="thumbnail" /><br />
-                            {color[0]}<br />
-                            {category} <br />
-                            {model}<br />
+                            <span className="price-span">{price}</span><br />
+                            <span className="model-span">{model}</span>{model}<br />
                             {title}<br />
-                            {price}
+                            {category} <br />
+                            {color}
                         </NavLink>
                     </li>
                 ))}
