@@ -19,6 +19,8 @@ import ProductDetail from './components/ProductDetails';
 import PayMent from './components/PayMent';
 
 import './styles/style02.css'
+import './styles/SideBar.css'
+import SideBar from './components/SideBar';
 
 
 
@@ -181,6 +183,7 @@ function App() {
             )}
            </div>
            <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount} setCartItems={setCartItems}/>
+           <SideBar/>
           <Footer />
         </div>
       } />

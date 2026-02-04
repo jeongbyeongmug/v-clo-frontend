@@ -5,9 +5,11 @@ import Qna from '../components/QnA.jsx';
 import RelatedProducts from '../components/RelatedProducts.jsx';
 import Header from '../components/Header.jsx'; 
 import Nav from '../components/Nav.jsx';         
+
 import Footer from '../components/Footer.jsx'; 
 import '../styles/Review.css';
 import '../styles/ProductDetails.css';
+import SideBar from './SideBar.jsx';
 
 export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
   const [searchParams] = useSearchParams(); 
@@ -119,6 +121,7 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
     <div className="product-details-page">
       <Header />
       <Nav isLogin={isLogin} onLogout={onLogout} />
+      <SideBar/>
 
       <main className="container">
         <section className="product-top">
