@@ -13,10 +13,10 @@ export default function Nav({isLogin, onLogout}) {
   // 카테고리 데이터
   const categories = [
     { name: '모델', sub: ['하정', '다희', '순영', '병묵', '성준'] },
-    { name: 'Top', sub: []},
-    { name: 'Bottom', sub: [] },
-    { name: 'Dress',sub: []},
-    { name: 'Accessories', sub: []}]
+    { name: <NavLink to='/productList?category=outer'>Outer</NavLink>, sub: []},
+    { name: <NavLink to='/productList?category=top'>Top</NavLink>, sub: [] },
+    { name: <NavLink to='/productList?category=bottom'>Bottom</NavLink>,sub: []},
+    { name: <NavLink to='/productList?category=accessory'>Accessory</NavLink>, sub: []}]
 
   return (
     <div className="nav">
