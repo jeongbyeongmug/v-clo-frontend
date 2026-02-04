@@ -58,7 +58,7 @@ export default function PayMent() {
     // 결제 금액이 0원일 경우
     if (finalPrice === 0) {
       alert("전액 할인 결제로 결제가 완료되었습니다!");
-      navigate('/'); // 메인으로 이동하거나 완료 페이지로 이동
+      navigate('/myPage'); // 메인으로 이동하거나 완료 페이지로 이동
       return; 
     }
 
