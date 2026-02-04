@@ -5,7 +5,10 @@ import ProductDetails from './ProductDetails';
 import Home from './Home';
 import SideBar from '../components/SideBar';
 
-export default function Section() {
+import MyPage from './MyPage';
+import Cart from './Cart';
+
+export default function Section({isLogin, id, handleApplyCoupon, cartItems, handleAddToCart, appliedDiscount}) {
     const { product } = useProduct();
     return (
     <section className="section">
@@ -14,6 +17,18 @@ export default function Section() {
                 <Route path='/' element={<Home />} />
                 <Route path='/productList/*' element={<ProductList />} />
                 <Route path='/productDetail/*' element={<ProductDetails />} />
+                <Route path="/myPage" element={isLogin ? 
+                                                <MyPage id={id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} /> 
+                                                :
+                                                <Navigate to="/login" />} />
+                <Route path="/cart" element={isLogin ? 
+                                                <Cart cartItems={cartItems} onAddToCart={handleAddToCart} 
+                                                handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id ? { ...i, count: Math.max(1, i.count + d) } 
+                                                :
+                                                 i))} 
+                                                handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscountRate={appliedDiscount} /> 
+                                                :
+                                                 <Navigate to="/login" />} />
                 
 
             </Routes>
