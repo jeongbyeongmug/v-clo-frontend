@@ -13,7 +13,7 @@ export default function Nav({isLogin, onLogout}) {
   // 카테고리 데이터
   const categories = [
     { name: '모델', sub: ['하정', '다희', '순영', '병묵', '성준'] },
-    { name: 'Outer', path:'?category=outer' , sub: []},
+    { name: 'Outer', path:'/productList?category=outer' , sub: []},
     { name: 'Top', path:'?category=top', sub: [] },
     { name: 'Bottom', path:'?category=bottom', sub: []},
     { name: 'Accessory', path:'?category=accessory', sub: []}]
