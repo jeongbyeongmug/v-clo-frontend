@@ -12,6 +12,10 @@ ul {
     display: inline-block;
 }
 
+.productUl > li > a {
+    color: #93867f;
+}
+
 .searchResult {
     position: relative;
     margin: 60px auto 30px auto;
@@ -48,7 +52,13 @@ ul {
     font-weight: bold;
 }
 
-.category-btn > .active {
+.category-btn:hover {
+    border-color: #807671;
+}
+
+
+
+.category-btn:focus {
     border: 2px solid rgb(184, 130, 81, 0.5);
     background-color: #c1896b;
     box-shadow: inset -4px -4px 6px -3px rgba(166, 125, 97, 0.5);
