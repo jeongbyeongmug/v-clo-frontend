@@ -13,10 +13,10 @@ export default function Nav({isLogin, onLogout}) {
   // 카테고리 데이터
   const categories = [
     { name: '모델', sub: ['하정', '다희', '순영', '병묵', '성준'] },
-    { name: 'Top', sub: []},
-    { name: 'Bottom', sub: [] },
-    { name: 'Dress',sub: []},
-    { name: 'Accessories', sub: []}]
+    { name: 'Outer', path:'/productList?category=outer' , sub: []},
+    { name: 'Top', path:'?category=top', sub: [] },
+    { name: 'Bottom', path:'?category=bottom', sub: []},
+    { name: 'Accessory', path:'?category=accessory', sub: []}]
 
   return (
     <div className="nav">
@@ -32,6 +32,10 @@ export default function Nav({isLogin, onLogout}) {
                 onMouseEnter={() => setActiveMenu(c.name)}
                 onMouseLeave={() => setActiveMenu(null)}
               >
+
+                {/* navlink가 있으면 path로 이동, 없으면 이름만 출력 */}
+                {c.path ? <NavLink to={c.path}></NavLink> : c.name}
+                
                 {c.name}
                 {/* 드롭다운 메뉴 */}
                 {activeMenu === c.name && (

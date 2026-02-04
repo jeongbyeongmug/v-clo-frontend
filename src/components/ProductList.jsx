@@ -3,6 +3,7 @@ import '../styles/ProductList.css';
 import { useProduct } from '../context/ProductContext';
 import {SearchResult, Category} from './SearchResult';
 import Nav from './Nav';
+import SideBar from './SideBar';
 
 export default function ProductList({ isLogin, onLogout }) {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +35,7 @@ export default function ProductList({ isLogin, onLogout }) {
     return (
     <>
         <Nav isLogin={isLogin} onLogout={onLogout} />
+        <SideBar/>
         {searchParams.get('query')!==null &&
             <SearchResult product={product} searchParams={searchParams} setSearchParams={setSearchParams}/>}
         <Category />
