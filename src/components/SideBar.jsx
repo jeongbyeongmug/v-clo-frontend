@@ -61,7 +61,7 @@ export default function SideBar({ wishlist, isLogin }) {
       <div className="sidebar-icons">
         <div className={`icon-wrapper ${activeMenu === 'search' ? 'active' : ''}`} onClick={() => handleSidebarClick('search')}>
           <FiSearch size={24} />
-          <span className="tooltip">스마트서치</span>
+          <span className="tooltip">스마트<br />서치</span>
         </div>
         <div className={`icon-wrapper ${activeMenu === 'mypick' ? 'active' : ''}`} onClick={() => handleSidebarClick('mypick')}>
           <FiHeart size={24} />
