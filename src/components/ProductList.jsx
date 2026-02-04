@@ -28,11 +28,11 @@ export default function ProductList() {
     searchList = searchList.map (({id, img, model, color, category, title, price})=> {
         return <li key={id}><NavLink to={'/productDetail?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
-            {color}<br />
-            {category} <br />
-            {model}<br />
+            {price}<br />
+            <span className="model-btn">{model}</span>{model}<br />
             {title}<br />
-            {price}
+            {category} <br />
+            {color}
             </NavLink></li>;
     });
 
