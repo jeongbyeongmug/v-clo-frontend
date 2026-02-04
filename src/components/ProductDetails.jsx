@@ -10,7 +10,7 @@ import '../styles/Review.css';
 import '../styles/ProductDetails.css';
 import SideBar from './SideBar.jsx';
 
-export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
+export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
   const [searchParams] = useSearchParams(); 
   const id = searchParams.get('id'); 
   const navigate = useNavigate();
@@ -77,6 +77,7 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
     }
 
     selectedItems.forEach(item => {
+    if(isLogin) {
       const productItem = {
         id: id || Date.now(), 
         name: "모렌 램스울 크롭 라운드 니트",
@@ -86,11 +87,10 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
         size: item.size,
         count: item.count
       };
-      if (onAddToCart) onAddToCart(productItem);
-    });
-    if(isLogin) {
       navigate('/cart');
+      handleAddToCart(productItem);
     } else navigate('/login')
+    });
   };
 
   const handlePayMent = () => {

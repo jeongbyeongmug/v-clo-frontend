@@ -16,9 +16,9 @@ export default function Section({isLogin, id, handleApplyCoupon, cartItems, hand
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/productList/*' element={<ProductList />} />
-                <Route path='/productDetail/*' element={<ProductDetails />} />
+                <Route path='/productDetail/*' element={<ProductDetails  handleAddToCart={handleAddToCart} isLogin={isLogin}/>} />
                 <Route path="/myPage" element={<MyPage id={id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} />} />
-                <Route path="/cart" element={<Cart cartItems={cartItems} onAddToCart={handleAddToCart} 
+                <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} isLogin={isLogin}
                                                 handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id 
                                                     ?
                                                      { ...i, count: Math.max(1, i.count + d) } 

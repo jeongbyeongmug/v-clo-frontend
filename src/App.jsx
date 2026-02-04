@@ -154,10 +154,11 @@ function App() {
 
   const handleAddToCart = (product) => {
     if (cartItems.find(item => item.id === product.id)) {
+      console.log(product)
       alert('이미 장바구니에 있는 상품입니다.');
       return;
     }
-    setCartItems([...cartItems, { ...product, count: 1 }]);
+    setCartItems([...cartItems, { ...product }]);
     alert('장바구니에 상품을 담았습니다.');
   };
 
@@ -192,9 +193,6 @@ function App() {
       <Route path="/login/find-password" element={<FindPassword />} />
       <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
-      {/* 제품 상세 페이지 */}
-      <Route path="/productDetail" element={<ProductDetail isLogin={isLogin}/>} />
-      <Route path="*" element={<ProductDetail />} />
 
 
       {/* 장바구니, 마이페이지 */}

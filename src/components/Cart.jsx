@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 
-export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscountRate, onAddToCart }) {
+export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscountRate, handleAddToCart }) {
   const navigate = useNavigate();
   const [selectedIds, setSelectedIds] = useState(cartItems.map(item => item.id));
 
@@ -95,7 +95,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
                 <div style={{ padding: '12px', textAlign: 'center' }}>
                   <div style={{ fontSize: '13px', fontWeight: '500' }}>{prod.name}</div>
                   <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#A67C52' }}>{prod.price.toLocaleString()}원</div>
-                  <button className="pop-add-btn" onClick={() => onAddToCart(prod)}>+ 담기</button>
+                  <button className="pop-add-btn" onClick={() => handleAddToCart(prod)}>+ 담기</button>
                 </div>
               </div>
             ))}
