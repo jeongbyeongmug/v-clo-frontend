@@ -4,6 +4,7 @@ import {
   FiUser, FiShoppingBag, FiPackage, FiEdit3, FiArrowRight, FiHome, 
   FiDatabase, FiCheckCircle, FiHeart 
 } from 'react-icons/fi';
+import SideBar from '../components/SideBar';
 
 export default function MyPage({ id, coupons, handleApplyCoupon }) {
   const navigate = useNavigate();

@@ -16,6 +16,8 @@ import Cart from './components/Cart';
 import MyPage from './components/MyPage';
 import ProductDetail from './components/ProductDetails';
 
+import PayMent from './components/PayMent';
+
 import './styles/style02.css'
 
 
@@ -195,6 +197,7 @@ function App() {
       {/* 장바구니, 마이페이지 */}
       <Route path="/cart" element={loginInfo.isLogin ? <Cart cartItems={cartItems} onAddToCart={handleAddToCart} handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id ? { ...i, count: Math.max(1, i.count + d) } : i))} handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscountRate={appliedDiscount} /> : <Navigate to="/login" />} />
       <Route path="/myPage" element={loginInfo.isLogin ? <MyPage id={loginInfo.id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} /> : <Navigate to="/login" />} />
+      <Route path="/payMent" element={loginInfo.isLogin ? <PayMent /> : <Navigate to="/login" />} />
     </Routes>
   );
 }
