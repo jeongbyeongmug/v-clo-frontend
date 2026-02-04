@@ -20,7 +20,7 @@ export default function ProductList() {
     );//searchList
 
     searchList = searchList.map (({id, img, model, color, category, title, price})=> {
-        return <li key={id}><NavLink to={'/productDetails?id='+id}>
+        return <li key={id}><NavLink to={'/productDetail?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
             {color}<br />
             {category} <br />

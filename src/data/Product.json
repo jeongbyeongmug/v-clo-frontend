@@ -2,96 +2,312 @@
   {
     "id": 1,
     "model": "하정",
-    "category": ["아우터","상의","하의"],
+    "category": "top",
     "img":"/public/images/blackYak m-jacket.jpg" ,
     "color": ["black", "white"],
     "title":"하정's 옷",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 10000
+    "price": 10000,
+    "detail": "상품 설명"
   },
 
   {
     "id": 2,
     "model": "병묵",
-    "category": ["아우터","상의","하의"],
+    "category": "bottom",
     "img":"/public/images/blackYak m-jacket.jpg" ,
     "color": ["black", "white"],
     "title":"병묵's 옷",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 10000
+    "price": 10000,
+    "detail": "상품 설명"
   },
 
   {
     "id": 3,
     "model": "성준",
-    "category": ["아우터","상의","하의"],
+    "category": "bottom",
     "img":"/public/images/blackYak m-jacket.jpg" ,
     "color": ["black", "white"],
     "title":"성준's 옷",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 10000
+    "price": 10000,
+    "detail": "상품 설명"
   },
 
   {
-    "id": 4,
+    "id": 401,
     "model": "다희",
-    "category": ["아우터","상의","하의"],
+    "category": "outer",
     "img":"/public/images/blackYak m-jacket.jpg" ,
     "color": ["mint", "pink"],
     "title":"블랙야크 m선라이트 AWC자켓",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 169000
+    "price": 169000,
+    "detail": "상품 설명"
   },
 
   {
     "id": 5,
     "model": "순영",
-    "category": ["아우터","상의","하의"],
+    "category": "top",
     "img":"/public/images/blackYak m-jacket.jpg" ,
     "color": ["black", "white"],
     "title":"순영's 옷",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 10000
+    "price": 10000,
+    "detail": "상품 설명"
   },
 
   {
-    "id": 6,
+    "id": 402,
     "model": "다희",
-    "category": ["아우터","상의","하의"],
-    "img":"/public/images/blackYak m-jacket.jpg" ,
-    "color": ["mint", "pink"],
-    "title":"블랙야크 m선라이트 AWC자켓",
+    "category": "outer",
+    "img":"/public/images/blackYak-padding.jpg" ,
+    "color": ["white", "pink", "black"],
+    "title":"블랙야크 여성 경량패딩",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 169000
+    "price": 70000,
+    "detail": "상품 설명"
   },
 
   {
-    "id": 7,
+    "id": 403,
     "model": "다희",
-    "category": ["아우터","상의","하의"],
+    "category": "accessory",
     "img":"/public/images/blackYak m-jacket.jpg" ,
-    "color": ["mint", "pink"],
-    "title":"블랙야크 m선라이트 AWC자켓",
+    "color": ["white", "pink"],
+    "title":"바라클라바",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 169000
+    "price": 19000,
+    "detail": "상품 설명"
   },
 
   {
-    "id": 8,
+    "id": 404,
     "model": "다희",
-    "category": ["아우터","상의","하의"],
+    "category": "outer",
     "img":"/public/images/blackYak m-jacket.jpg" ,
-    "color": ["mint", "pink"],
-    "title":"블랙야크 m선라이트 AWC자켓",
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 169000
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 405,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 406,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 407,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 408,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 409,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 410,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 411,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 412,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 413,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 414,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 415,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 416,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 417,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 418,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 419,
+    "model": "다희",
+    "category": "bottom",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"다희's 바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 420,
+    "model": "다희",
+    "category": "top",
+    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"다희's 상의",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
   }
 ]

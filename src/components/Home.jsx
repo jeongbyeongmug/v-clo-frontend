@@ -52,10 +52,10 @@ export default function Home() {
             <ul className="productUl">
                 {product.map(({id, img, model, color, category, title, price}) => (
                     <li key={id}>
-                        <NavLink to={'/productDetails?id=' + id}>
+                        <NavLink to={'/productDetail?id=' + id}>
                             <img src={img} alt={title} className="thumbnail" /><br />
                             {color[0]}<br />
-                            {category[0]} <br />
+                            {category} <br />
                             {model}<br />
                             {title}<br />
                             {price}
