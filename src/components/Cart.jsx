@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 
-export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscountRate, handleAddToCart }) {
+export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon,
+                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, }) {
   const navigate = useNavigate();
-  const [selectedIds, setSelectedIds] = useState(cartItems.map(item => item.id));
+
 
   useEffect(() => {
     setSelectedIds(cartItems.map(item => item.id));
@@ -17,13 +18,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
     { id: 904, name: "모던 체크 재킷", price: 59000, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=200" }
   ];
 
-  const selectedProductTotal = cartItems
-    .filter(item => selectedIds.includes(item.id))
-    .reduce((acc, cur) => acc + (cur.price * cur.count), 0);
 
-  const discountAmount = selectedProductTotal * appliedDiscountRate;
-  const deliveryFee = (selectedProductTotal >= 80000 || selectedProductTotal === 0) ? 0 : 3000;
-  const finalTotal = selectedProductTotal - discountAmount + deliveryFee;
   
   // 적립 포인트 계산 (최종 결제 금액의 1%)
   const rewardPoints = Math.floor(finalTotal * 0.01);
@@ -63,7 +58,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
 
           <div className="price-summary">
             <div className="price-row"><span>선택 상품 합계</span><span>{selectedProductTotal.toLocaleString()}원</span></div>
-            {appliedDiscountRate > 0 && <div className="price-row" style={{ color: '#ff4d4f' }}><span>쿠폰 할인</span><span>- {discountAmount.toLocaleString()}원</span></div>}
+            {appliedDiscount > 0 && <div className="price-row" style={{ color: '#ff4d4f' }}><span>쿠폰 할인</span><span>- {discountAmount.toLocaleString()}원</span></div>}
             <div className="price-row"><span>배송비</span><span>{deliveryFee.toLocaleString()}원</span></div>
             
             {/* 포인트 적립 안내 추가 */}
