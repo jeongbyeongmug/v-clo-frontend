@@ -2,8 +2,9 @@ import {useSearchParams,NavLink} from 'react-router-dom';
 import '../styles/ProductList.css';
 import { useProduct } from '../context/ProductContext';
 import {SearchResult, Category} from './SearchResult';
+import Nav from './Nav';
 
-export default function ProductList() {
+export default function ProductList({ isLogin, onLogout }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const queryValue = 
         searchParams.get('query') || 
@@ -32,6 +33,7 @@ export default function ProductList() {
 
     return (
     <>
+        <Nav isLogin={isLogin} onLogout={onLogout} />
         {searchParams.get('query')!==null &&
             <SearchResult product={product} searchParams={searchParams} setSearchParams={setSearchParams}/>}
         <Category />
