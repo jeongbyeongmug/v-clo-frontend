@@ -8,7 +8,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
 
 
   useEffect(() => {
-    setSelectedIds(cartItems.map(item => item.id));
+    selectedIds = cartItems.map(item => item.id);
   }, [cartItems.length]);
 
   const popularProducts = [

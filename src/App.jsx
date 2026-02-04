@@ -13,6 +13,9 @@ import FindPassword from './components/FindPassword';
 import Join from './components/Join';
 
 
+
+import ProductDetail from './components/ProductDetails';
+
 import PayMent from './components/PayMent';
 
 import './styles/style02.css'
@@ -139,22 +142,31 @@ function App() {
       } //if_else
   }//onJoinSubmit
 
-  const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [cartItems, setCartItems] = useState([
     { id: 101, name: '보송폭닥 크롭 니트', price: 22800, count: 1, img: 'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200' }
   ]);
-
+  
   useEffect(() => {
     const saved = JSON.parse(sessionStorage.getItem('loginInfo'));
     if (saved) setLoginInfo(saved);
   }, []);
+  
+  const [appliedDiscount, setAppliedDiscount] = useState(0);
+  const selectedIds = cartItems.map(item => item.id);
+  const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count), 0);
+
+  const discountAmount = selectedProductTotal * appliedDiscount;
+  const deliveryFee = (selectedProductTotal >= 80000 || selectedProductTotal === 0) ? 0 : 3000;
+  const finalTotal = selectedProductTotal - discountAmount + deliveryFee;
 
   const handleAddToCart = (product) => {
     if (cartItems.find(item => item.id === product.id)) {
+      console.log(cartItems.filter(item => selectedIds.includes(item.id)))
       alert('이미 장바구니에 있는 상품입니다.');
       return;
     }
-    setCartItems([...cartItems, { ...product, count: 1 }]);
+    setCartItems([...cartItems, { ...product }]);
+    console.log(selectedProductTotal)
     alert('장바구니에 상품을 담았습니다.');
   };
 
@@ -177,7 +189,9 @@ function App() {
             <Header />
             <Nav isLogin={isLogin} onLogout={onLogout} />
            </div>
-           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount} setCartItems={setCartItems}/>
+           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} 
+                    appliedDiscount={appliedDiscount} selectedIds={selectedIds} selectedProductTotal={selectedProductTotal}
+                    discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal}/>
            <SideBar isLogin={isLogin}/>
           <Footer />
         </div>
@@ -189,7 +203,9 @@ function App() {
       <Route path="/login/find-password" element={<FindPassword />} />
       <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
-      {/* 마이페이지 */}
+
+
+      {/* 장바구니, 마이페이지 */}
       
       
       <Route path="/payMent" element={loginInfo.isLogin ? <PayMent /> : <Navigate to="/login" />} />
