@@ -6,7 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import '../styles/SideBar.css'; 
 
-export default function SideBar({ wishlist = [], isLogin, hasAlerted, onAlertSidebar }) {
+export default function SideBar({ wishlist, isLogin }) {
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState(null); 
   const [activeFilter, setActiveFilter] = useState(null);
@@ -44,11 +44,8 @@ export default function SideBar({ wishlist = [], isLogin, hasAlerted, onAlertSid
 
   const handleSidebarClick = (menuType, externalUrl = null) => {
     if (!isLogin) {
-      if (!hasAlerted) {
         alert('로그인 후 이용 가능합니다.');
-        onAlertSidebar();
-      }
-      navigate('/login');
+        navigate('/login');
       return;
     }
     

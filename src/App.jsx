@@ -183,10 +183,10 @@ function App() {
             )}
            </div>
            <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} appliedDiscount={appliedDiscount} setCartItems={setCartItems}/>
-           <SideBar/>
+           <SideBar isLogin={isLogin}/>
           <Footer />
         </div>
-      } />
+      } /> 
        
       {/* 로그인 화면: 깔끔하게 로그인 컴포넌트만! */}
       <Route path="/login/*" element={<Login onLoginSubmit={onLoginSubmit}/>} />
