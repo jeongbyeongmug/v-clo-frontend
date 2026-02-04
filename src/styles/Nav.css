@@ -58,6 +58,19 @@
   color: #ffb6c1; /* 마우스 올렸을 때 아뜨랑스 핑크 포인트 */
 }
 
+.category-item {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: rgb(255, 255, 255, 0.7);
+  position: absolute;
+  top: 30px; left: -35px;
+  padding: 10px auto 10px auto;
+  gap: 10px;
+  width: 100px;
+}
+
 /* 2. 우측 섹션 (검색창 + 유저메뉴) */
 .right-section {
   display: flex;
