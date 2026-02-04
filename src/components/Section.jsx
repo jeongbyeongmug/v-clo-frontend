@@ -19,7 +19,7 @@ export default function Section() {
             </Routes>
         </div>
         <div className="chatSupport">
-            <p>chat support</p>
+            <img src="/public/images/talk-icon-brown.jpg" width="80"/>
         </div>
         <nav className="sideNav">
             <Routes>
