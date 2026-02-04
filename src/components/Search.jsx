@@ -10,14 +10,14 @@ export default function Search() {
     const navigate = useNavigate(); /* 검색 결과로 주소 이동용*/
     const { product } = useProduct(); /* 상품 data 가져오기 */
 
-    const [invisible, setInvisible] = useState(false); /* 연관검색창 보이는 유&무 이벤트*/
+    // const [invisible, setInvisible] = useState(false); /* 연관검색창 보이는 유&무 이벤트*/
     const searchRef = useRef(null);
 
     //외부 클릭 감지
     useEffect(()=> {
         const clickOutside = (e) => {
-            if (searchRef.current && !searchRef.current.contains(e.target)) {
-                setInvisible(false);
+            if (searchRef.current && e.key=='Enter' && !searchRef.current.contains(e.target)) {
+                setTextVal('');
             }//if
         };//clickOutside
         document.addEventListener('mousedown', clickOutside);
@@ -29,11 +29,11 @@ export default function Search() {
     
 
     /* 검색창: 엔터, 혹은 버튼을 누르면 검색주소로 이동하는 이벤트 */
-    const onClickSubmit = () => {
+    const onClickSubmit = (e) => {
         if (textVal.trim()==="") return;
         else { const query = textVal.toLowerCase();
+            // setTextVal('');
             navigate(`/productList?query=${query}&page=1`);
-            setTextVal('');
         }
     }
 
@@ -55,12 +55,13 @@ export default function Search() {
             <input type="text" 
                 onChange={(e)=> {
                     setTextVal(e.target.value); //검색어 입력할때마다 글자 자동 리랜더링
-                    setInvisible(true);
                 }} 
                 onKeyDown={(e)=> {
-                    if(e.key=='Enter') onClickSubmit(); // 엔터를 쳐도 주소 이동
+                    if(e.key=='Enter') {
+                        onClickSubmit();
+                    } // 엔터를 쳐도 주소 이동
                 }} 
-                onFocus={()=> {setTextVal('');}} //포커스가 다시 들어올때 기존 검색어 초기화
+                // onFocus={()=> {setInvisible(true);}} //포커스가 다시 들어올때 기존 검색어 초기화
                 value={textVal}/>
             <button className="btnIcon" onClick={onClickSubmit}> {/* 버튼을 누르면 주소 이동*/}
                 <img className="icon" src="/public/images/to-look-for-icon-brown.jpg" height="25" />
