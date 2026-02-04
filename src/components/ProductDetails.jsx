@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom'; 
 import Review from '../components/Review.jsx';
 import Qna from '../components/QnA.jsx';
 import RelatedProducts from '../components/RelatedProducts.jsx';
+import Header from '../components/Header.jsx'; 
+import Nav from '../components/Nav.jsx';         
+import Footer from '../components/Footer.jsx'; 
 import '../styles/Review.css';
 import '../styles/ProductDetails.css';
 
-export default function ProductDetails() {
+export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
   const [searchParams] = useSearchParams(); 
   const id = searchParams.get('id'); 
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('상품정보');
-  const [mainImage, setMainImage] = useState("https://atimg.sonyunara.com/files/attrangs/goods/168875/list13_694ac197257d3.gif"); // 메인 배너 이미지
+  const [mainImage, setMainImage] = useState("https://atimg.sonyunara.com/files/attrangs/goods/168875/694ac194140cd.jpg");
   const [selectedColorName, setSelectedColorName] = useState("Ivory(model)");
- 
+  
+  const [selectedItems, setSelectedItems] = useState([]);
+
   const benefits = [
     { id: '01', title: '첫 회원가입', desc: '중복 5천원 할인' },
     { id: '02', title: '회원 등급별', desc: '최대 5만원 쿠폰' },
@@ -24,17 +30,72 @@ export default function ProductDetails() {
   ];
 
   const colorOptions = [
-    { name: 'black', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847263_0.png' },
-    { name: 'navy', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847262_0.png' },
-    { name: 'beige', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847574_0.png' },
-    { name: 'mocha', src: 'https://atimg.sonyunara.com/files/attrangs/goods/168875/1765847492_0.png' },
+    { name: 'black', src: '/images/Round-knit-black.jpg' },
+    { name: 'navy', src: '/images/Round-knit-navy.jpg' },
+    { name: 'beige', src: '/images/Round-knit-beige.jpg' },
+    { name: 'mocha', src: '/images/Round-knit-mocha.jpg' },
   ];
+
+  const handleSizeClick = (size) => {
+    const itemKey = `${selectedColorName} / ${size}`;
+    
+    if (selectedItems.find(item => item.key === itemKey)) {
+      alert("이미 선택된 옵션입니다.");
+      return;
+    }
+
+    const newItem = {
+      key: itemKey,
+      color: selectedColorName,
+      size: size,
+      price: 22800,
+      count: 1
+    };
+    setSelectedItems([...selectedItems, newItem]);
+  };
+
+  const handleCountChange = (key, delta) => {
+    setSelectedItems(prev => prev.map(item => 
+      item.key === key ? { ...item, count: Math.max(1, item.count + delta) } : item
+    ));
+  };
+
+  const handleRemoveItem = (key) => {
+    setSelectedItems(prev => prev.filter(item => item.key !== key));
+  };
+
+  const totalPrice = selectedItems.reduce((acc, item) => acc + (item.price * item.count), 0);
 
   const detailBtnText = isOpen ? "상세정보 닫기 ▲" : "상세정보 보기 ▼";
   const detailClass = isOpen ? "details-content open" : "details-content";
 
+  const handleCartClick = () => {
+    if (selectedItems.length === 0) {
+      alert("옵션을 선택해주세요.");
+      return;
+    }
+
+    selectedItems.forEach(item => {
+      const productItem = {
+        id: id || Date.now(), 
+        name: "모렌 램스울 크롭 라운드 니트",
+        price: item.price,
+        img: mainImage,
+        color: item.color,
+        size: item.size,
+        count: item.count
+      };
+      if (onAddToCart) onAddToCart(productItem);
+    });
+    
+    navigate('/cart');
+  };
+
   return (
-    <div className="App">
+    <div className="product-details-page">
+      <Header />
+      <Nav isLogin={isLogin} onLogout={onLogout} />
+
       <main className="container">
         <section className="product-top">
           <div className="product-image">
@@ -76,14 +137,12 @@ export default function ProductDetails() {
               <div className="selection-row">
                 <div className="label">옵션</div>
                 <div className="content">
-                  {/* 수정: 선택된 컬러 이름이 나오도록 변경 */}
                   <p className="selected-name">{selectedColorName}</p>
                   <div className="color-select">
                     {colorOptions.map((color) => (
                       <div 
                         key={color.name} 
                         className="select"
-                        /* 클릭 시 이미지와 이름을 변경하는 로직 추가 */
                         onClick={() => {
                           setMainImage(color.src);
                           setSelectedColorName(color.name);
@@ -101,8 +160,12 @@ export default function ProductDetails() {
                 <div className="content">
                   <div className="size-buttons">
                     {['S', 'M', 'L', 'XL'].map(size => (
-                      <button key={size} className="btn-size">
-                        <img src="https://cdn-icons-png.flaticon.com/512/754/754850.png" className="icon-delivery" alt="delivery" />
+                      <button 
+                        key={size} 
+                        className="btn-size" 
+                        onClick={() => handleSizeClick(size)} // 클릭 시 아이템 추가
+                      >
+                        <img src="/images/deliveryMan.jpg" className="icon-delivery" alt="delivery" />
                         {size} [즉시출고]
                       </button>
                     ))}
@@ -111,16 +174,37 @@ export default function ProductDetails() {
               </div>
             </div>
 
+            {selectedItems.length > 0 && (
+              <div className="selected-items-list">
+                {selectedItems.map(item => (
+                  <div key={item.key} className="selected-item-box">
+                    <div className="item-name">{item.key}</div>
+                    <div className="item-control-row">
+                      <div className="count-btn-group">
+                        <button onClick={() => handleCountChange(item.key, -1)}>-</button>
+                        <span>{item.count}</span>
+                        <button onClick={() => handleCountChange(item.key, 1)}>+</button>
+                      </div>
+                      <div className="item-price-delete">
+                        <span>{(item.price * item.count).toLocaleString()}원</span>
+                        <button onClick={() => handleRemoveItem(item.key)} className="delete-x">✕</button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
             <div className="buy-section">
               <div className="total-price-row">
                 <span>총금액</span>
-                <span className="price"><strong>0</strong>원</span>
+                <span className="price"><strong>{totalPrice.toLocaleString()}</strong>원</span>
               </div>
               <div className="action-group">
                 <div className="btn-icon">
                   <span className="icon">♥</span><span className="count">2,643</span>
                 </div>
-                <button className="btn-cart">장바구니</button>
+                <button className="btn-cart" onClick={handleCartClick}>장바구니</button>
                 <div className="buy-wrap">
                   <span className="pay-badge">●pay 결제가능</span>
                   <button className="btn-buy">구매하기</button>
@@ -153,21 +237,11 @@ export default function ProductDetails() {
                     <p className="sub-text">아크릴(10%) 스판,스판덱스(3%)</p>
                   </div>
                 </div>
-
-                <div className="info-row">
-                  <div className="info-label">모델, 상품<br />사이즈 정보</div>
-                  <div className="info-value">
-                    <p className="sub-text">정윤 Height : 162cm Top : 44반/S Pants : 26inch/s Shoes : 235mm</p>
-                    <p className="sub-text">주연 Height : 167cm Top : 44/S Pants : 25inch/S Shoes : 245mm</p>
-                    <p className="sub-text">아연 Height : 161cm Top : 44/S Pants : 25inch/S Shoes : 225mm</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 하단 탭 메뉴 영역 */}
         <section className="product-detail-tabs">
           <ul className="tab-menu">
             <li onClick={() => setActiveTab('상품정보')} className={activeTab === '상품정보' ? 'active' : ''}>상품정보</li>
@@ -178,10 +252,8 @@ export default function ProductDetails() {
           </ul>
         </section>
 
-        {/* --- 여기 탭 전환 구간 --- */}
         {activeTab === '상품정보' && (
           <>
-            {/* 멤버십 영역 */}
             <section className="membership-section">
               <div className="membership-header">
                 <h2 className="membership-title">Membership</h2>
@@ -206,45 +278,20 @@ export default function ProductDetails() {
 
               <div className={detailClass}>
                 <div style={{ padding: '20px 0', backgroundColor: '#fff' }}>
-                  {/* 세트 1 */}
                   <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/attrangs/story/nt5392/kr/content_08.jpg" alt="상세이미지1" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>첫 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
+                    <img src="/images/Round-knit-detail1.jpg" alt="상세이미지1" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
                   </div>
-
                   <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766025761_12.jpg" alt="상세이미지2" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>두 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
+                    <img src="/images/Round-knit-detail2.jpg" alt="상세이미지2" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
                   </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766478227_8.jpg" alt="상세이미지3" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>세 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
+                   <div style={{ marginBottom: '50px', textAlign: 'center' }}>
+                    <img src="/images/Round-knit-detail3.jpg" alt="상세이미지3" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
                   </div>
-
-                  <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/files/attrangs/goodsm/168875/1766121986_4.jpg" alt="상세이미지4" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>네 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
+                   <div style={{ marginBottom: '50px', textAlign: 'center' }}>
+                    <img src="/images/Round-knit-detail4.jpg" alt="상세이미지4" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
                   </div>
-
                   <div style={{ marginBottom: '50px', textAlign: 'center' }}>
-                    <img src="https://atimg.sonyunara.com/attrangs/story/nt5392/kr/content_09.jpg" alt="상세이미지5" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
-                    <div style={{ marginTop: '20px', fontSize: '15px', color: '#333', lineHeight: '1.8' }}>
-                      <p><strong>다섯 번째 포인트 제목</strong></p>
-                      <p>여기에 첫 번째 설명 줄을 입력하세요.</p>
-                    </div>
+                    <img src="/images/Round-knit-detail5.jpg" alt="상세이미지5" style={{ width: '100%', maxWidth: '500px', borderRadius: '8px' }} />
                   </div>
                 </div>
               </div>
@@ -258,12 +305,11 @@ export default function ProductDetails() {
         {activeTab === '배송/환불' && <div style={{padding: '50px', textAlign: 'center'}}>무료 배송 및 7일 이내 환불 가능합니다.</div>}
       </main>
 
-      {/* Footer 바로 위 상품 리스트 */}
       <ul className="product_list2">
         <li className="product_item2">
           <div className="product_box2">
             <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168953/list1_694dafd0067bd.gif" alt="상품 이미지1" />
+              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168953/list13_694dafce0bab2.gif" alt="상품 이미지1" />
             </div>
             <div className="info_area">
               <div className="price_top">
@@ -280,7 +326,7 @@ export default function ProductDetails() {
         <li className="product_item2">
           <div className="product_box2">
             <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168929/list1_6952e855210f2.gif" alt="상품 이미지2" />
+              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168929/list13_6952e8526c46d.gif" alt="상품 이미지2" />
             </div>
             <div className="info_area">
               <div className="price_top">
@@ -297,7 +343,7 @@ export default function ProductDetails() {
         <li className="product_item2">
           <div className="product_box2">
             <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168923/list1_6954140d2291c.gif" alt="상품 이미지3" />
+              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168923/list13_6954140a31aef.gif" alt="상품 이미지3" />
             </div>
             <div className="info_area">
               <div className="price_top">
@@ -314,7 +360,7 @@ export default function ProductDetails() {
         <li className="product_item2">
           <div className="product_box2">
             <div className="img_area">
-              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168917/list1_694ef4f0f14dd.gif" alt="상품 이미지4" />
+              <img src="https://atimg.sonyunara.com/files/attrangs/goods/168917/list13_694ef4edebe38.gif" alt="상품 이미지4" />
             </div>
             <div className="info_area">
               <div className="price_top">
@@ -325,9 +371,10 @@ export default function ProductDetails() {
               <p className="item_name">니쥬 홀가먼트 울 헤어리 폴라 터틀넥 니트</p>
               <div className="item_tags">BEST | 오늘출발</div>
             </div>
-          </div>
+          </div>  
         </li>
       </ul>
+      <Footer />
     </div>
   );
 }

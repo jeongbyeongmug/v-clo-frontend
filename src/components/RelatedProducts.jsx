@@ -1,12 +1,11 @@
 import React from 'react';
 
 const RelatedProducts = () => {
-  // 1. 화면에 보여줄 상품 데이터 (이름, 가격, 이미지주소)
   const productList = [
-    { id: 1, name: "키브 버튼 배색 레이어드 후드 가디건", price: "37.000원", img: "/images/blackYak-ivory.jpg" },
-    { id: 2, name: "홀린 브러쉬 배색 스트라이프 카라넥 버튼 긴팔 니트", price: "27,800원", img: "/images/blackYak-mint.jpg" },
-    { id: 3, name: "헤어리 솔잎퍼 타이 세트 가디건", price: "28,800", img: "/images/blackYak-pink.jpg" },
-    { id: 4, name: "올리아 모직 히든밴딩 기모 부츠컷 슬랙스", price: "35,500", img: "/images/blackYak-black.jpg" },
+    { id: 1, name: "트위드 카라 긴팔 롱 원피스", price: "96,000", img: "https://atimg.sonyunara.com/files/attrangs/goods/167487/list13_68db2731b5fa0.gif" },
+    { id: 2, name: "브러쉬 배색 스트라이프 긴팔 니트", price: "32,700", img: "https://atimg.sonyunara.com/files/attrangs/goods/168563/list13_6921c8d6bf4dd.gif" },
+    { id: 3, name: "브이벤 후드 배색 루즈핏 체크 셔츠", price: "28,800", img: "https://atimg.sonyunara.com/files/attrangs/goods/168191/list13_690229b3ea2f7.gif" },
+    { id: 4, name: "하트넥 배색 크롭 블라우스", price: "62,900", img: "https://atimg.sonyunara.com/files/attrangs/goods/158732/list13_6972631f069a2.gif" },
   ];
 
   return (
