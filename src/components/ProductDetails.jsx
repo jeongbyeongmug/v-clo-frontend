@@ -87,8 +87,32 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
       };
       if (onAddToCart) onAddToCart(productItem);
     });
-    
-    navigate('/cart');
+    if(isLogin) {
+      navigate('/cart');
+    } else navigate('/login')
+  };
+
+  const handlePayMent = () => {
+    if (selectedItems.length === 0) {
+      alert("옵션을 선택해주세요.");
+      return;
+    }
+
+    selectedItems.forEach(item => {
+      const productItem = {
+        id: id || Date.now(), 
+        name: "모렌 램스울 크롭 라운드 니트",
+        price: item.price,
+        img: mainImage,
+        color: item.color,
+        size: item.size,
+        count: item.count
+      };
+      // if (onAddToCart) onAddToCart(productItem); 추후 결제창에 담기게 함수 정의
+    });
+    if(isLogin) {
+      navigate('/payMent');
+    } else navigate('/login')
   };
 
   return (
@@ -207,7 +231,7 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
                 <button className="btn-cart" onClick={handleCartClick}>장바구니</button>
                 <div className="buy-wrap">
                   <span className="pay-badge">●pay 결제가능</span>
-                  <button className="btn-buy">구매하기</button>
+                  <button className="btn-buy" onClick={handlePayMent}>구매하기</button>
                 </div>
               </div>
 
