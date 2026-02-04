@@ -4,14 +4,18 @@ import { useProduct } from '../context/ProductContext';
 import {SearchResult, Category} from './SearchResult';
 import SideBar from './SideBar';
 
-export default function ProductList({ isLogin, onLogout }) {
+export default function ProductList() {
     const [searchParams, setSearchParams] = useSearchParams();
+
+    // 쿼리스트링의 키값을 받아오기
     const queryValue = 
         searchParams.get('query') || 
         searchParams.get('category') || 
         searchParams.get('model') || 
         searchParams.get('color') ||
         '';
+
+    //쿼리스트링 키값과 일치하는 상품만 필터링
     const { product } = useProduct();
     let searchList = product.filter( ({model, color, category, title}) =>
         model.includes(queryValue) ||
@@ -20,6 +24,7 @@ export default function ProductList({ isLogin, onLogout }) {
         title.includes(queryValue)
     );//searchList
 
+    //필터링된 상품을 다시 맵 돌려서 랜더링
     searchList = searchList.map (({id, img, model, color, category, title, price})=> {
         return <li key={id}><NavLink to={'/productDetail?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
@@ -34,11 +39,13 @@ export default function ProductList({ isLogin, onLogout }) {
     return (
     <>
         <SideBar/>
+        {/* 서치 결과가 있을때만 검색결과 창을 상단에 띄움 */}
         {searchParams.get('query')!==null &&
             <SearchResult product={product} searchParams={searchParams} setSearchParams={setSearchParams}/>}
         <Category />
-
-        <div>
+        
+        {/* 상품 목록 */}
+        <div className="product-box">
             <ul className="productUl">
                 {searchList}
             </ul>

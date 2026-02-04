@@ -26,17 +26,22 @@ function Category() {
     return (
     <div className="main-box">
         <div className="category-box">
-            <button className="category-btn" onClick={()=>{onClickFilter('category','all')}}>all</button>
-            <button className="category-btn" onClick={()=>{onClickFilter('category','outer')}}>outer</button>
-            <button className="category-btn" onClick={()=>{onClickFilter('category','top')}}>top</button>
-            <button className="category-btn" onClick={()=>{onClickFilter('category','bottom')}}>bottom</button>
-            <button className="category-btn" onClick={()=>{onClickFilter('category','accessory')}}>accessory</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','all')}}>All</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','outer')}}>Outer</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','top')}}>Top</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','bottom')}}>Bottom</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','dress')}}>Dress</button>
+            <button className="category-btn" onClick={()=>{onClickFilter('category','accessory')}}>Accessory</button>
         </div>   
         <div className="filter-box">
             <ul>
                 <li>
                     <details><summary>모델 선택</summary>
-                        <li>모델</li>
+                        <li className="model">하정</li>
+                        <li className="model">병묵</li>
+                        <li className="model">성준</li>
+                        <li className="model">다희</li>
+                        <li className="model">순영</li>
                     </details>
                 </li>
                 <li>신상품</li>
