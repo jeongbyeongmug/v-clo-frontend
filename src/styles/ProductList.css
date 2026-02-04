@@ -20,6 +20,25 @@ ul {
     color: #93867f;
 }
 
+.model-span {
+    width: 25px;
+    margin-right: 3px;
+    display: inline-block;
+    background-color: #d59c98;
+    border: 1px solid #ae6c56;
+    border-radius: 30%;
+    font-weight: bold;
+    font-size: 0.3em;
+    color:#f9f2f2;
+}
+
+.price-span {
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: #56473f
+}
+
+
 .searchResult {
     position: relative;
     margin: 60px auto 30px auto;
