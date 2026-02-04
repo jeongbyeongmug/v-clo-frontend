@@ -32,10 +32,5 @@ export default function Section({isLogin, id, handleApplyCoupon, cartItems, hand
         <div className="chatSupport">
             <img src="/public/images/talk-icon-brown.jpg" width="80"/>
         </div>
-        <nav className="sideNav">
-            <Routes>
-                <Route path='/' element={<SideBar />} />
-            </Routes>
-        </nav>
     </section>
 )}//Section
