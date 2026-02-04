@@ -16,6 +16,7 @@ export default function Nav({isLogin, onLogout}) {
     { name: 'Outer', path:'/productList?category=outer' , sub: []},
     { name: 'Top', path:'/productList?category=top', sub: [] },
     { name: 'Bottom', path:'/productList?category=bottom', sub: []},
+    { name: 'Dress', path:'/productList?category=dress', sub: []},
     { name: 'Accessory', path:'/productList?category=accessory', sub: []}]
 
   return (
@@ -35,7 +36,6 @@ export default function Nav({isLogin, onLogout}) {
 
                 {/* navLink가 있으면 path로 이동, 없으면 이름만 출력 */}
                 {c.path ? <NavLink to={c.path}>{c.name}</NavLink> : c.name}
-                
                 
                 {/* 드롭다운 메뉴 */}
                 {activeMenu === c.name && (

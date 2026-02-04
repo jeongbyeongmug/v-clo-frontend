@@ -3,6 +3,10 @@ ul {
     list-style: none;
 }
 
+.product-box {
+    margin: 60px auto 30px auto;
+}
+
 .productUl {
     margin: 60px auto 30px auto;
 }
@@ -56,7 +60,13 @@ ul {
     border-color: #807671;
 }
 
+.model {
+    background-color: rgb(255, 255, 255, 0.7);
+}
 
+.model:focus {
+    background-color: #ffcac6;
+}
 
 .category-btn:focus {
     border: 2px solid rgb(184, 130, 81, 0.5);
@@ -70,6 +80,7 @@ ul {
     width: 90%; height: 30px;
     margin: 0px auto 0px auto;
     background-color: #eaeaea;
+    z-index: 999;
 }
 
 .filter-box > ul {
@@ -77,6 +88,10 @@ ul {
     justify-content: space-evenly;
     line-height: 30px;
     color: #7c6d65;
+}
+
+.filter-box > ul:focus {
+    font-weight: bold;
 }
 
 .thumbnail {height: 350px; width:350px;}
