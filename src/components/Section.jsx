@@ -21,6 +21,7 @@ export default function Section() {
         </div>
         <div className="chatSupport">
             <p>chat support</p>
+            <img src="/public/images/talk-icon-brown.jpg"/>
         </div>
         <nav className="sideNav">
             <Routes>
