@@ -8,7 +8,7 @@ import '../styles/Review.css';
 import '../styles/ProductDetails.css';
 import { useProduct } from '../context/ProductContext';
 
-export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
+export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(2643);
 
@@ -80,7 +80,7 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
         size: item.size,
         count: item.count
       };
-      if (onAddToCart) onAddToCart(productItem);
+      handleAddToCart(productItem);
     });
     navigate(isLogin ? '/cart' : '/login');
   };
