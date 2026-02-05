@@ -27,7 +27,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
 
   // --- [추천 상품 4개 랜덤 추출] ---
   const recommendedProducts = [...product]
-    .filter(item => String(item.id) !== String(id)) // 현재 상품 제외
+    .filter(item => String(item.id) !== String(id) ) // 현재 상품 제외
     .sort(() => Math.random() - 0.5) // 무작위 섞기
     .slice(0, 4); // 4개만 선택
   // --------------------------------------------
@@ -257,7 +257,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
         )}
 
         {tab === '리뷰' && <Review />}
-        {tab === '관련상품' && <RelatedProducts />}
+        {tab === '관련상품' && <RelatedProducts handleAddToCart={handleAddToCart}/>}
         {tab === 'Q&A' && <Qna />}
         {tab === '배송/환불' && <div style={{ padding: '50px', textAlign: 'center' }}>무료 배송 및 7일 이내 환불 가능합니다.</div>}
 
@@ -265,7 +265,8 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
           <h3 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '22px' }}>추천 상품</h3>
           <ul className="product_list2">
             {recommendedProducts.map((item) => (
-              <li className="product_item2" key={item.id}>
+              <li className="product_item2" key={item.id}
+              onClick={() => {handleAddToCart(item); navigate('/cart');}}> 
                 <div className="product_box2">
                   <div className="img_area"><img src={item.img} alt={item.title} /></div>
                   <div className="info_area">
