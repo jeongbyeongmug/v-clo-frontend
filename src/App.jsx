@@ -155,7 +155,7 @@ function App() {
   
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const selectedIds = cartItems.map(item => item.id);
-  const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count), 0);
+  const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count ), 0);
 
   const discountAmount = selectedProductTotal * appliedDiscount;
   const deliveryFee = (selectedProductTotal >= 80000 || selectedProductTotal === 0) ? 0 : 3000;
