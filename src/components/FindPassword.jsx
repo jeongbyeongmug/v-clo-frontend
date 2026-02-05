@@ -28,13 +28,13 @@ export default function FindPassword({onPhoneSubmit, onOtpSubmit, otpInfo, setOt
     <div className="FindId-container">
         <header>
             <div className='backBtn' onClick={() => {setOtpInfo({...otpInfo, isOtp:false}); navigate(-1);}}><IoChevronBack /></div>
-            <br /><h2>{!isOtp ? '아이디 찾기' : '아이디 확인'}</h2>
+            <br /><h2>{!isOtp ? '비밀번호 찾기' : '비밀번호 확인'}</h2>
         </header>
         {!isOtp ? 
         <section className="otp-false">
             <nav><div><span>휴대폰 번호 인증</span></div><div><span>실명 인증</span></div><div><span>이메일 인증</span></div></nav>
             
-            <form onSubmit={(e) => {
+            <form  onSubmit={(e) => {
                                         e.preventDefault();
                                         onPhoneSubmit(phone);
                                     }} className='phone-form'>
@@ -44,7 +44,7 @@ export default function FindPassword({onPhoneSubmit, onOtpSubmit, otpInfo, setOt
                 
                 <input className="phoneBtn" type="submit" disabled={phone.length<11} value='인증 요청' /> 
                 
-            </form>
+            </form> 
             <form onSubmit={(e) => {
                                         e.preventDefault(); 
                                         onOtpSubmit(otp, phone)
@@ -52,7 +52,7 @@ export default function FindPassword({onPhoneSubmit, onOtpSubmit, otpInfo, setOt
                 <input className="otp-input input" type="text" placeholder="인증번호" value={otp} maxLength={6}
                         onChange={(e) => handleOtpChange(e)}/>
 
-                <input className="otpBtn" type="submit" disabled={otp.length<6} value='아이디 확인' />
+                <input className="otpBtn" type="submit" disabled={otp.length<6} value='비밀번호 확인' />
             </form>
         </section>
 
