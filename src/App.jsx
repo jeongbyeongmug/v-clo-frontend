@@ -35,7 +35,22 @@ function App() {
           , userSmsAccept:'Y', userEmail:'aaaa@naver.com', userEmailAccept:'Y', userReferrerId:'에드민'},
         {userName:'브이클로', userId:'vclo', userPassword:'55555', userPhone:'05555555555', userBirth:'1940-12-31'
           , userSmsAccept:'Y', userEmail:'aaaa@naver.com', userEmailAccept:'Y', userReferrerId:'admin'},
-      ]))}}, []);
+      ]))}
+    if (!localStorage.getItem('cartItems')) {
+    localStorage.setItem('cartItems'
+      , JSON.stringify([
+        { id: 101, name: '보송폭닥 크롭 니트', price: 22800, count: 1, img: 'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200' }
+      ]))}
+    }, []);
+
+
+  const [cartItems, setCartItems]  = useState(JSON.parse(localStorage.getItem('cartItems')) || []);
+
+  const cartInput = (product) => {
+    setCartItems([...cartItems, { ...product }]);
+    localStorage.setItem('cartItems', JSON.stringify([...cartItems, { ...product }]))
+    
+  }
 
 
   const [loginInfo, setLoginInfo] = useState({isLogin:false, id:'', password:''}); //로그인 상태관리 객체 정의
@@ -121,14 +136,12 @@ function App() {
       const emailCheck = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/.test(email); //@ 앞뒤 특수문자,한글 제외, @ 뒤에 마침표(.)가 정확히 하나만 존재 + 9글자 이상
       
       const referrerIdCheck = join.some(({userId}) => userId===referrerId || referrerId==''); //추천인 확인
-      // console.log(join);
-      console.log(joinCheck)
       const error = [{check: nameCheck, rsn:'이름: 한글로만 입력하세요'}, {check: idCheck, rsn:'아이디는 영문과 숫자만 사용가능 5글자 이상 입력해야합니다'}
         , {check: passwordCheck, rsn: '패스워드: 영문으로 입력하시고, 숫자 1글자 이상을 포함 바랍니다'}, {check: phoneCheck, rsn:'잘못된 전화번호 형식입니다.'}
         , {check: !joinCheck, rsn:'이미 회원가입된 아이디, 전화번호 입니다.'},  {check: emailCheck, rsn:'잘못된 이메일 형식입니다.'}
         , {check: referrerIdCheck, rsn:'유효하지 않은 추천인입니다.'}]
 
-      //회원정보 넣기 !joinCheck && referrerIdCheck && acceptCheck
+      //회원정보 넣기 (!joinCheck && referrerIdCheck && acceptCheck)
       if(!joinCheck && passwordCheck && emailCheck && referrerIdCheck) {
         join.push({userName: name, userId: id, userPassword: password, userPhone: phone, userBirth: birth
                   , userSmsAccept: smsAccept, userEmail: email, userEmailAccept: emailAccept, userReferrerId: referrerId});
@@ -141,10 +154,6 @@ function App() {
         }
       } //if_else
   }//onJoinSubmit
-
-  const [cartItems, setCartItems] = useState([
-    { id: 101, name: '보송폭닥 크롭 니트', price: 22800, count: 1, img: 'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200' }
-  ]);
   
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const selectedIds = cartItems.map(item => item.id);
@@ -155,15 +164,12 @@ function App() {
   const finalTotal = selectedProductTotal - discountAmount + deliveryFee;
 
   const handleAddToCart = (product) => {
-    console.log(product.count)
-    // console.log(cartItems)
     if (cartItems.find(item => item.id === product.id)) {
       
       alert('이미 장바구니에 있는 상품입니다.');
       return;
     }
-    setCartItems([...cartItems, { ...product }]);
-    // console.log(cartItems)
+    cartInput(product);
     alert('장바구니에 상품을 담았습니다.');
   };
 
@@ -186,9 +192,9 @@ function App() {
             <Header />
             <Nav isLogin={isLogin} onLogout={onLogout} />
            </div>
-           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} 
-                    appliedDiscount={appliedDiscount} selectedIds={selectedIds} selectedProductTotal={selectedProductTotal}
-                    discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal} setCartItems={setCartItems}/>
+           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} handleAddToCart={handleAddToCart} 
+                    appliedDiscount={appliedDiscount} selectedIds={selectedIds} selectedProductTotal={selectedProductTotal} setCartItems={setCartItems}
+                    discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal} cartInput={cartInput} cartItems={cartItems}/>
            <SideBar isLogin={isLogin}/>
           <Footer />
         </div>
@@ -205,7 +211,7 @@ function App() {
       {/* 장바구니, 마이페이지 */}
       
       
-      <Route path="/payMent" element={loginInfo.isLogin ? <PayMent /> : <Navigate to="/login" />} />
+      <Route path="/payMent" element={loginInfo.isLogin ? <PayMent finalTotal={finalTotal}/> : <Navigate to="/login" />} />
     </Routes>
   );
 }
