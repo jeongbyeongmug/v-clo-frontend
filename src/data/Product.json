@@ -632,6 +632,396 @@
     "detail": "상품 설명"
   },
 
+   {
+    "id": 301,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer1.jpg" ,
+    "color": ["brown", "black"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 302,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer2.jpg" ,
+    "color": ["green", "black"],
+    "title":"아우터",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 303,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer3.jpg" ,
+    "color": ["green", "white"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 304,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer4.jpg" ,
+    "color": ["black", "orange"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 305,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer5.jpg" ,
+    "color": ["gray", "orange"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 306,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer6.jpg" ,
+    "color": ["green", "black"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 307,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer7.jpg" ,
+    "color": ["blue", "black"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 308,
+    "model": "성준",
+    "category": "outer",
+    "img":"/public/images/sungjun/sj_outer8.jpg" ,
+    "color": ["black", "white"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 290000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 309,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top1.jpg" ,
+    "color": ["blue", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+  
+   {
+    "id": 310,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top2.jpg" ,
+    "color": ["black", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 311,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top3.jpg" ,
+    "color": ["black", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 312,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top4.jpg" ,
+    "color": ["black", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 313,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top5.jpg" ,
+    "color": ["gray", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 314,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top6.jpg" ,
+    "color": ["brown", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+  
+  {
+    "id": 315,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top7.jpg" ,
+    "color": ["brown", "white"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 316,
+    "model": "성준",
+    "category": "top",
+    "img":"/public/images/sungjun/sj_top8.jpg" ,
+    "color": ["green", "orange"],
+    "title":"상의",
+    "stock": 20,
+    "size": ["S", "M", "L"],
+    "price": 190000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 317,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom1.jpg" ,
+    "color": ["blue", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 318,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom2.jpg" ,
+    "color": ["blue", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 319,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom3.jpg" ,
+    "color": ["brown", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 320,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom4.jpg" ,
+    "color": ["black", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 321,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom5.jpg" ,
+    "color": ["green", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+   {
+    "id": 322,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom6.jpg" ,
+    "color": ["blue", "black"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 323,
+    "model": "성준",
+    "category": "bottom",
+    "img":"/public/images/sungjun/sj_bottom7.jpg" ,
+    "color": ["brown", "white"],
+    "title":"바지",
+    "stock": 30,
+    "size": ["S", "M", "L"],
+    "price": 220000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 324,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory1.jpg" ,
+    "color": ["brown", "black"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 325,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory2.jpg" ,
+    "color": ["yellow", "black"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 326,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory3.jpg" ,
+    "color": ["red", "black"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 327,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory4.jpg" ,
+    "color": ["black", "white"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 328,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory5.jpg" ,
+    "color": ["gray", "white"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 329,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory6.jpg" ,
+    "color": ["black", "white"],
+    "title":"비니",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 330,
+    "model": "성준",
+    "category": "accessory",
+    "img":"/public/images/sungjun/sj_accessory7.jpg" ,
+    "color": ["black", "white"],
+    "title":"신발",
+    "stock": 40,
+    "size": ["S", "M", "L"],
+    "price": 150000,
+    "detail": "상품 설명"
+  },
+
   {
     "id": 401,
     "model": "다희",
