@@ -8,7 +8,7 @@ import SideBar from '../components/SideBar';
 import MyPage from './MyPage';
 import Cart from './Cart';
 
-export default function Section({isLogin, id, handleApplyCoupon, cartItems, handleAddToCart, appliedDiscount, setCartItems, selectedIds,  selectedProductTotal,  discountAmount, deliveryFee, finalTotal }) {
+export default function Section({setCartItems, cartItems, isLogin, id, handleApplyCoupon, handleAddToCart, appliedDiscount, cartInput, selectedIds,  selectedProductTotal,  discountAmount, deliveryFee, finalTotal }) {
     const { product } = useProduct();
     return (
     <section className="section">
@@ -18,13 +18,8 @@ export default function Section({isLogin, id, handleApplyCoupon, cartItems, hand
                 <Route path='/productList/*' element={<ProductList />} />
                 <Route path='/productDetail/*' element={<ProductDetails  handleAddToCart={handleAddToCart} isLogin={isLogin}/>} />
                 <Route path="/myPage" element={<MyPage id={id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} />} />
-                <Route path="/cart" element={<Cart cartItems={cartItems} handleAddToCart={handleAddToCart} isLogin={isLogin} id={id}
-                                                handleQuantityChange={(id, d) => setCartItems(prev => prev.map(i => i.id === id 
-                                                    ?
-                                                     { ...i, count: Math.max(1, i.count + d) } 
-                                                    :
-                                                    i))} 
-                                                handleRemoveItem={id => setCartItems(prev => prev.filter(i => i.id !== id))} appliedDiscount={appliedDiscount} 
+                <Route path="/cart" element={<Cart handleAddToCart={handleAddToCart} isLogin={isLogin} id={id} cartInput={cartInput} cartItems={cartItems}
+                                                appliedDiscount={appliedDiscount} setCartItems={setCartItems}
                                                 selectedIds={selectedIds} selectedProductTotal={selectedProductTotal}  discountAmount={discountAmount} deliveryFee={deliveryFee} 
                                                 finalTotal={finalTotal} handleApplyCoupon={handleApplyCoupon}/>} />
                                                 

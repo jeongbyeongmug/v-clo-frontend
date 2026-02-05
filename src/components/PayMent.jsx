@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../styles/PayMent.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function PayMent() {
-  const productPrice = 12900; 
-  const [totalPoint, setTotalPoint] = useState(12500);
+export default function PayMent({finalTotal}) {
+  const productPrice = finalTotal; 
+  const [totalPoint, setTotalPoint] = useState(50000);
   const [coupon, setCoupon] = useState(0);
   const [point, setPoint] = useState(0); 
   const [pg, setPg] = useState('kakaopay.TC0ONETIME');
