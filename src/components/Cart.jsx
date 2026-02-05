@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
+import { useProduct } from '../context/ProductContext';
 
 export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon,
                                  selectedProductTotal, discountAmount, deliveryFee, finalTotal, }) {
   const navigate = useNavigate();
 
 
-  useEffect(() => {
-    selectedIds = cartItems.map(item => item.id);
-  }, [cartItems.length]);
+  // useEffect(() => {
+  //   selectedIds = cartItems.map(item => item.id);
+  // }, [cartItems.length]);
 
   const popularProducts = [
-    { id: 901, name: "여리핏 루즈 가디건", price: 24500, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=200" },
-    { id: 902, name: "와이드 핀턱 슬랙스", price: 38000, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=200" },
-    { id: 903, name: "데일리 베이직 티셔츠", price: 12000, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=200" },
-    { id: 904, name: "모던 체크 재킷", price: 59000, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=200" }
+    { id: 901, name: "여리핏 루즈 가디건", price: 24500, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=200", count: 1},
+    { id: 902, name: "와이드 핀턱 슬랙스", price: 38000, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=200", count: 1 },
+    { id: 903, name: "데일리 베이직 티셔츠", price: 12000, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=200", count: 1 },
+    { id: 904, name: "모던 체크 재킷", price: 59000, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=200", count: 1 }
   ];
 
 
   
   // 적립 포인트 계산 (최종 결제 금액의 1%)
   const rewardPoints = Math.floor(finalTotal * 0.01);
-
+  
   return (
     <div className="container">
       <header className="header">
@@ -40,7 +41,7 @@ export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem
           {cartItems.map(item => (
             <div key={item.id} className="cart-item-row">
               <input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => {
-                selectedIds.includes(item.id) ? setSelectedIds(selectedIds.filter(i => i !== item.id)) : setSelectedIds([...selectedIds, item.id]);
+                selectedIds.includes(item.id) ? selectedIds = selectedIds.filter(i => i !== item.id) : selectedIds = [...selectedIds, item.id];
               }} className="checkbox" />
               <img src={item.img} alt="p" className="product-img" style={{ width: '60px', height: '75px', objectFit: 'cover' }} />
               <div style={{ flex: 1 }}>
