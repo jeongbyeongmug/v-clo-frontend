@@ -33,10 +33,10 @@ export default function ProductList() {
             <li key={id}>
             <NavLink to={'/productDetail?id='+id}>
             <img src={img} alt={title} className="thumbnail" /><br />
-            {price}<br />
-            <span className="model-span">{model}</span>{model}<br />
-            {title}<br />
-            {category} <br />
+            <span className="price-span">{price.toLocaleString()}</span><br />
+            <span className="model-span">model</span>{model}<br />
+            {title}<br /><hr className="hr-line"/>
+            <span className="category-span">{category}</span>&nbsp;
             {color}
             </NavLink></li>
         ); 
