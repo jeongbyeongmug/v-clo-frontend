@@ -54,11 +54,30 @@
   padding: 30px 0px 30px 0px;
 }
 
+.productUl > li {
+  margin: 0 5px 10px 5px;
+  padding: 0 0 10px 0;
+}
+
 .chatSupport {
   width: 80px; height: 80px;
   position: fixed;
   z-index: 999;
   bottom: 10px; right:5px;
+  /* border: 3px solid #bab0b0; */
+  box-shadow: 3px 3px 4px 2px  rgba(194, 185, 181, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: center;
+  background-color: #ffffff;
+}
+
+.chatSupport > img {
+  width: 70px;
+  object-fit:contain;
+  display:flex;
+  margin: 9px 0 0 3px;
+  align-items: center;
 }
 
 .footer {
