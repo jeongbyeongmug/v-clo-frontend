@@ -35,9 +35,8 @@ export default function Search() {
         .filter( ({ title })=>
             title.toLowerCase().includes(textVal.toLowerCase())
     ).map( ({ id, title }) => (
-        <li key={id} className="searchLi">
-            <NavLink to={'/productDetail?id='+id} className="nav-link"
-                onClick={()=> setOpen(false)}>
+        <li key={id} className="search-li">
+            <NavLink to={`/productDetail?id=${id}`} className="nav-link">
                 {title} 
             </NavLink>
         </li>
@@ -50,7 +49,7 @@ export default function Search() {
                 value = {textVal}
                 onChange = {(e) => {
                     setTextVal(e.target.value); //검색어 입력할때마다 글자 자동 리랜더링
-                    if (e.target.value.trim() !== '') setOpen(true);
+                    if (e.target.value.trim() !== '' && !open) setOpen(true);
                 }} 
                 onKeyDown = {(e) => {
                     if(e.key=='Enter') onClickSubmit();
