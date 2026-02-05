@@ -661,26 +661,26 @@
   {
     "id": 403,
     "model": "다희",
-    "category": "accessory",
-    "img":"/public/images/dahee/blackYak-jacket.jpg" ,
-    "color": ["white", "pink"],
-    "title":"바라클라바",
+    "category": "bottom",
+    "img":"/public/images/dahee/bottom3.jpg" ,
+    "color": ["brown", "green"],
+    "title":"퀸럽 기모 A라인 데일리 체크 미디스커트",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 19000,
+    "price": 13960,
     "detail": "상품 설명"
   },
 
   {
     "id": 404,
     "model": "다희",
-    "category": "outer",
-    "img":"/public/images/dahee/blackYak-jacket.jpg" ,
-    "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory8.webp" ,
+    "color": ["brown", "gray", "pink"],
+    "title":"갤럭시워치8스트랩 클래식 모던 가죽",
     "stock": 10,
     "size": ["S", "M", "L"],
-    "price": 169000,
+    "price": 15400,
     "detail": "상품 설명"
   },
 
@@ -729,7 +729,7 @@
     "category": "accessor",
     "img":"/public/images/dahee/accessory7.jpg" ,
     "color": ["white", "black", "orange"],
-    "title":"온 클라우드몬스터 런닝화",
+    "title":"on 클라우드몬스터 런닝화",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -889,6 +889,45 @@
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 421,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory9.jpg" ,
+    "color": ["white", "gray" ,"black"],
+    "title":"보네뜨리 부츠컷 레그워머 발토시",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 11390,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 422,
+    "model": "다희",
+    "category": "bottom",
+    "img":"/public/images/dahee/bottom4.jpg" ,
+    "color": ["gray", "beige", "black"],
+    "title":"에네로 여성겨울스커트 A라인",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 423,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory10.jpg" ,
+    "color": ["white", "gray" ,"black"],
+    "title":"LOVEVBOOK 여성용 노트북 토트백",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 125460,
     "detail": "상품 설명"
   }
 ]
