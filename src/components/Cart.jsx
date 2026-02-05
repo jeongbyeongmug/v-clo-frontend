@@ -71,7 +71,7 @@ export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isL
           </div>
 
           <div className="order-btn-group">
-            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}><NavLink to ='/payMent'>주문하기</NavLink></button>
+            <NavLink to ='/payMent' className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}>주문하기</NavLink>
           </div>
         </div>
 
