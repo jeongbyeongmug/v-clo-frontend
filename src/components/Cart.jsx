@@ -4,7 +4,7 @@ import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from
 import { useProduct } from '../context/ProductContext';
 
 export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon, setCartItems,
-                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartInput, cartItems}) {
+                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartItems}) {
   const navigate = useNavigate();
   const handleQuantityChange = (id, d) => {let cartItemsCheck = cartItems.map(array => array.id === id ? { ...array, count: Math.max(1, array.count + d) } : array)
                                             setCartItems(cartItemsCheck); 
@@ -71,7 +71,7 @@ export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isL
           </div>
 
           <div className="order-btn-group">
-            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}><NavLink to ='/payMent'>주문하기</NavLink></button>
+            <NavLink to ='/payMent' className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}>주문하기</NavLink>
           </div>
         </div>
 
