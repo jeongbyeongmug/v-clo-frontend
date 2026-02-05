@@ -1,39 +1,46 @@
 import React from 'react';
+import { useProduct } from '../context/ProductContext';
+import { useNavigate } from 'react-router-dom';
 
-const RelatedProducts = () => {
-  const productList = [
-    { id: 1, name: "트위드 카라 긴팔 롱 원피스", price: "96,000", img: "https://atimg.sonyunara.com/files/attrangs/goods/167487/list13_68db2731b5fa0.gif" },
-    { id: 2, name: "브러쉬 배색 스트라이프 긴팔 니트", price: "32,700", img: "https://atimg.sonyunara.com/files/attrangs/goods/168563/list13_6921c8d6bf4dd.gif" },
-    { id: 3, name: "브이벤 후드 배색 루즈핏 체크 셔츠", price: "28,800", img: "https://atimg.sonyunara.com/files/attrangs/goods/168191/list13_690229b3ea2f7.gif" },
-    { id: 4, name: "하트넥 배색 크롭 블라우스", price: "62,900", img: "https://atimg.sonyunara.com/files/attrangs/goods/158732/list13_6972631f069a2.gif" },
-  ];
+const RelatedProducts = ({ currentId, handleAddToCart }) => {
+  const { product } = useProduct();
+  const navigate = useNavigate();
+
+  // 현재 상품 제외 -> 랜덤 섞기 -> 4개 추출 
+  const randomList = [...product]
+    .filter(item => String(item.id) !== String(currentId))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
 
   return (
     <div style={{ padding: '40px 0' }}>
-      <h3 style={{ fontSize: '18px', marginBottom: '20px', fontWeight: 'bold' }}>
+      <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '20px' }}>
         함께 많이 본 상품들
       </h3>
-
+      
       <div style={{ display: 'flex', gap: '15px' }}>
-        
-        {/* 3. map을 돌려서 상품 개수만큼 반복 생성 */}
-        {productList.map((item) => (
-          <div key={item.id} style={{ width: '25%', cursor: 'pointer' }}>
-            
-            {/* 상품 이미지 */}
-            <div style={{ width: '100%', borderRadius: '10px', overflow: 'hidden', backgroundColor: '#f5f5f5' }}>
-              <img src={item.img} alt={item.name} style={{ width: '100%', display: 'block' }} />
+        {randomList.map((item) => (
+          <div key={item.id} style={{ width: '25%' }} onClick={() => {handleAddToCart(item); navigate('/cart');} }>
+            {/* 이미지 영역 */}
+            <div style={{ borderRadius: '10px', overflow: 'hidden', backgroundColor: '#f5f5f5', aspectRatio: '3/4' }}>
+              <img 
+                src={item.img} 
+                alt={item.title} 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              />
             </div>
 
-            {/* 상품 정보 (이름, 가격) */}
+            {/* 정보 영역 (이름, 가격 자동 반영) */}
             <div style={{ marginTop: '10px' }}>
-              <p style={{ fontSize: '14px', color: '#333', marginBottom: '5px' }}>{item.name}</p>
-              <p style={{ fontSize: '15px', fontWeight: 'bold' }}>{item.price}원</p>
+              <p style={{ fontSize: '14px', color: '#333', margin: '0 0 5px 0' }}>
+                {item.title}
+              </p>
+              <p style={{ fontSize: '15px', fontWeight: 'bold' }}>
+                {item.price.toLocaleString()}원
+              </p>
             </div>
-
           </div>
         ))}
-
       </div>
     </div>
   );
