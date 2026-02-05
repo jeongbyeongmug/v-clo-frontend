@@ -191,15 +191,15 @@ function App() {
           <div className='sticky-top'>
             <Header />
             <Nav isLogin={isLogin} onLogout={onLogout} />
-           </div>
-           <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} handleAddToCart={handleAddToCart} 
+          </div>
+          <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} handleAddToCart={handleAddToCart} 
                     appliedDiscount={appliedDiscount} selectedIds={selectedIds} selectedProductTotal={selectedProductTotal} setCartItems={setCartItems}
                     discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal} cartInput={cartInput} cartItems={cartItems}/>
-           <SideBar isLogin={isLogin}/>
+          <SideBar isLogin={isLogin}/>
           <Footer />
         </div>
       } /> 
-       
+      
       {/* 로그인 화면: 깔끔하게 로그인 컴포넌트만! */}
       <Route path="/login/*" element={<Login onLoginSubmit={onLoginSubmit}/>} />
       <Route path="/login/find-id" element={<FindId onPhoneSubmit={onPhoneSubmit} onOtpSubmit={onOtpSubmit} otpInfo={otpInfo} setOtpInfo={setOtpInfo} findId={findId}/>} />
