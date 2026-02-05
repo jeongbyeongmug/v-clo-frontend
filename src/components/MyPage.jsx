@@ -123,12 +123,6 @@ export default function MyPage({ id, coupons, handleApplyCoupon }) {
 
   return (
     <div className="container">
-      <header className="header">
-        <div className="inner">
-          <div className="logo" onClick={() => navigate('/')}>V-CLO</div>
-          <div className="header-icons"><FiUser size={24} style={{ color: '#A67C52' }} /><FiShoppingBag size={24} cursor="pointer" onClick={() => navigate('/cart')} /></div>
-        </div>
-      </header>
       <main className="inner">
         <section className="full-section" style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '30px 0' }}>
           <div className="profile-card"><div className="avatar">{id ? id.substring(0, 1).toUpperCase() : 'U'}</div><div style={{ flex: 1 }}><h3 style={{ margin: 0 }}>{id}님</h3><span className="rank-badge">Silver Member</span></div><div className="point-summary"><div className="point-item">찜 <strong>{wishlist.length}</strong></div><div className="point-item">쿠폰 <strong>{coupons.length}</strong></div></div></div>
