@@ -203,7 +203,7 @@ function App() {
       {/* 로그인 화면: 깔끔하게 로그인 컴포넌트만! */}
       <Route path="/login/*" element={<Login onLoginSubmit={onLoginSubmit}/>} />
       <Route path="/login/find-id" element={<FindId onPhoneSubmit={onPhoneSubmit} onOtpSubmit={onOtpSubmit} otpInfo={otpInfo} setOtpInfo={setOtpInfo} findId={findId}/>} />
-      <Route path="/login/find-password" element={<FindPassword />} />
+      <Route path="/login/find-password" element={<FindPassword onPhoneSubmit={onPhoneSubmit} onOtpSubmit={onOtpSubmit} otpInfo={otpInfo} setOtpInfo={setOtpInfo} findId={findId}/>} />
       <Route path="/login/join" element={<Join onJoinSubmit={onJoinSubmit}/>} />
 
 

@@ -1,6 +1,6 @@
 /* 기본 초기화 */
 * { margin: 0; padding: 0; border: 0; box-sizing: border-box; }
-
+.Join-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
 .Join-container {
     width: 640px;
     height: 674px;
