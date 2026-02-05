@@ -17,8 +17,6 @@ import Join from './components/Join';
 import ProductDetail from './components/ProductDetails';
 
 import PayMent from './components/PayMent';
-
-import './styles/style02.css'
 import './styles/SideBar.css'
 import SideBar from './components/SideBar';
 
