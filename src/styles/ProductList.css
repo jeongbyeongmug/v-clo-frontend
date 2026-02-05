@@ -38,6 +38,17 @@ ul {
     color: #56473f
 }
 
+.category-span {
+    width: 45px;
+    display: inline;
+    padding: 0 3px 2px 3px;
+    /* background-color: #d6b49a;
+    border: 1px solid #ae765c; */
+    border-radius: 35%;
+    font-weight: bold;
+    font-size: 0.7em;
+    color:#874949;
+}
 
 .searchResult {
     position: relative;
@@ -113,4 +124,13 @@ ul {
     font-weight: bold;
 }
 
-.thumbnail {height: 350px; width:350px;}
+.thumbnail {
+    height: 350px; width:350px;
+    /* padding: 10px 10px 0 10px; */
+}
+
+.hr-line {
+    border: 1px solid #e8e4e2;
+    width: 70%;
+    margin: auto;
+}
