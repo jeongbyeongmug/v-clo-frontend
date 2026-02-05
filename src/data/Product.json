@@ -1327,8 +1327,8 @@
   {
     "id": 417,
     "model": "다희",
-    "category": "outer",
-    "img":"/public/images/dahee/outer2.webp" ,
+    "category": "top",
+    "img":"/public/images/dahee/top2.webp" ,
     "color": ["white", "black"],
     "title":"자라 ZARA 자라 크롭 우븐자켓",
     "stock": 10,
@@ -1355,8 +1355,8 @@
   {
     "id": 419,
     "model": "다희",
-    "category": "outer",
-    "img":"/public/images/dahee/outer3.jpg" ,
+    "category": "top",
+    "img":"/public/images/dahee/top4.jpg" ,
     "color": ["white", "pink"],
     "title":"링클 리본 가디건",
     "stock": 10,

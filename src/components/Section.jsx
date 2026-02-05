@@ -3,7 +3,6 @@ import {NavLink,Routes,Route} from 'react-router-dom';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import Home from './Home';
-import SideBar from '../components/SideBar';
 
 import MyPage from './MyPage';
 import Cart from './Cart';
@@ -22,9 +21,6 @@ export default function Section({setCartItems, cartItems, isLogin, id, handleApp
                                                 appliedDiscount={appliedDiscount} setCartItems={setCartItems}
                                                 selectedIds={selectedIds} selectedProductTotal={selectedProductTotal}  discountAmount={discountAmount} deliveryFee={deliveryFee} 
                                                 finalTotal={finalTotal} handleApplyCoupon={handleApplyCoupon}/>} />
-                                                
-                
-
             </Routes>
         </div>
         <div className="chatSupport">
