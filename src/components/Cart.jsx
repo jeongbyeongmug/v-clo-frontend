@@ -3,20 +3,15 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 import { useProduct } from '../context/ProductContext';
 
-export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon, setCartItems,
-                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartInput, cartItems}) {
+export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon,
+                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, }) {
   const navigate = useNavigate();
-  const handleQuantityChange = (id, d) => {let cartItemsCheck = cartItems.map(array => array.id === id ? { ...array, count: Math.max(1, array.count + d) } : array)
-                                            setCartItems(cartItemsCheck); 
-                                            localStorage.setItem('cartItems', JSON.stringify([...cartItemsCheck]))
-                                          }
 
-  const handleRemoveItem= (id) => {let cartItemsCheck = cartItems.filter(array => array.id !== id)
-                                    setCartItems(cartItemsCheck);
-                                    localStorage.setItem('cartItems', JSON.stringify([...cartItemsCheck]))
-                                  }
-                                  
-  
+
+  // useEffect(() => {
+  //   selectedIds = cartItems.map(item => item.id);
+  // }, [cartItems.length]);
+
   const popularProducts = [
     { id: 901, name: "여리핏 루즈 가디건", price: 24500, img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=200", count: 1},
     { id: 902, name: "와이드 핀턱 슬랙스", price: 38000, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=200", count: 1 },
@@ -71,7 +66,7 @@ export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isL
           </div>
 
           <div className="order-btn-group">
-            <button className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}><NavLink to ='/payMent'>주문하기</NavLink></button>
+            <NavLink to ='/payMent' className="btn-all" onClick={() => alert(`${finalTotal.toLocaleString()}원 주문이 완료되었습니다. ${rewardPoints}P가 적립될 예정입니다.`)}>주문하기</NavLink>
           </div>
         </div>
 
