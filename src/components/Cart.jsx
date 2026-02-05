@@ -3,8 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from 'react-icons/fi';
 import { useProduct } from '../context/ProductContext';
 
-export default function Cart({ cartItems, handleQuantityChange, handleRemoveItem, appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon,
-                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, }) {
+export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon, setCartItems,
+                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartItems}) {
   const navigate = useNavigate();
 
 
