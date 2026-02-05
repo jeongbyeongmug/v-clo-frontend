@@ -5,7 +5,7 @@
     "category": "outer",
     "img":"/public/images/hajeong/hj_outer1.jpg" ,
     "color": ["black", "white"],
-    "title":"하정's 옷",
+    "title":"아우터",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 10000,
@@ -18,7 +18,7 @@
     "category": "outer",
     "img":"/public/images/hajeong/hj_outer2.jpg" ,
     "color": ["black", "white"],
-    "title":"병묵's 옷",
+    "title":"아우터",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 10000,
@@ -31,7 +31,7 @@
     "category": "outer",
     "img":"/public/images/hajeong/hj_outer3.jpg" ,
     "color": ["black", "white"],
-    "title":"성준's 옷",
+    "title":"아우터",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 10000,
@@ -44,7 +44,7 @@
     "category": "outer",
     "img":"/public/images/hajeong/hj_outer4.jpg" ,
     "color": ["mint", "pink"],
-    "title":"블랙야크 m선라이트 AWC자켓",
+    "title":"아우터",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -54,10 +54,36 @@
   {
     "id": 5,
     "model": "하정",
+    "category": "outer",
+    "img":"/public/images/hajeong/hj_outer5.jpg" ,
+    "color": ["mint", "pink"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 6,
+    "model": "하정",
+    "category": "outer",
+    "img":"/public/images/hajeong/hj_outer6.jpg" ,
+    "color": ["mint", "pink"],
+    "title":"아우터",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 21,
+    "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top1.jpg" ,
     "color": ["black", "white"],
-    "title":"순영's 옷",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 10000,
@@ -65,12 +91,12 @@
   },
 
   {
-    "id": 402,
+    "id": 22,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top2.jpg" ,
     "color": ["white", "pink", "black"],
-    "title":"블랙야크 여성 경량패딩",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 70000,
@@ -78,12 +104,12 @@
   },
 
   {
-    "id": 403,
+    "id": 23,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top3.jpg" ,
     "color": ["white", "pink"],
-    "title":"바라클라바",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -91,12 +117,12 @@
   },
 
   {
-    "id": 404,
+    "id": 24,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top4.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -104,12 +130,12 @@
   },
 
   {
-    "id": 405,
+    "id": 25,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top5.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -117,12 +143,12 @@
   },
 
   {
-    "id": 406,
+    "id": 26,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top6.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -130,12 +156,12 @@
   },
 
   {
-    "id": 407,
+    "id": 27,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top7.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -143,12 +169,12 @@
   },
 
   {
-    "id": 408,
+    "id": 28,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top8.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -156,12 +182,12 @@
   },
 
   {
-    "id": 409,
+    "id": 29,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top9.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -169,12 +195,12 @@
   },
 
   {
-    "id": 410,
+    "id": 30,
     "model": "하정",
     "category": "top",
     "img":"/public/images/hajeong/hj_top10.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"상의",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -182,12 +208,25 @@
   },
 
   {
-    "id": 411,
-    "model": "다희",
+    "id": 31,
+    "model": "하정",
+    "category": "top",
+    "img":"/public/images/hajeong/hj_top11.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"상의",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 51,
+    "model": "하정",
     "category": "bottom",
     "img":"/public/images/hajeong/hj_skirt1.jpg" ,
     "color": ["white", "black", "pink"],
-    "title":"블랙야크 외투",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 169000,
@@ -195,12 +234,12 @@
   },
 
   {
-    "id": 412,
-    "model": "다희",
+    "id": 52,
+    "model": "하정",
     "category": "bottom",
     "img":"/public/images/hajeong/hj_skirt2.jpg" ,
     "color": ["white", "pink"],
-    "title":"바라클라바",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -208,12 +247,12 @@
   },
 
   {
-    "id": 413,
-    "model": "다희",
+    "id": 53,
+    "model": "하정",
     "category": "bottom",
     "img":"/public/images/hajeong/hj_skirt3.jpg" ,
     "color": ["white", "pink"],
-    "title":"바라클라바",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -221,12 +260,12 @@
   },
 
   {
-    "id": 414,
-    "model": "다희",
+    "id": 54,
+    "model": "하정",
     "category": "bottom",
     "img":"/public/images/hajeong/hj_skirt4.jpg" ,
     "color": ["white", "pink"],
-    "title":"바라클라바",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -234,12 +273,12 @@
   },
 
   {
-    "id": 415,
-    "model": "다희",
+    "id": 55,
+    "model": "하정",
     "category": "bottom",
-    "img":"/public/images/hajeong/hj_pants.jpg" ,
+    "img":"/public/images/hajeong/hj_skirt5.webp" ,
     "color": ["white", "pink"],
-    "title":"바라클라바",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -247,51 +286,12 @@
   },
 
   {
-    "id": 416,
-    "model": "다희",
-    "category": "accessory",
-    "img":"/public/images/hajeong/hj_top10.jpg" ,
-    "color": ["white", "pink"],
-    "title":"바라클라바",
-    "stock": 10,
-    "size": ["S", "M", "L"],
-    "price": 19000,
-    "detail": "상품 설명"
-  },
-
-  {
-    "id": 417,
-    "model": "다희",
-    "category": "accessory",
-    "img":"/public/images/blackYak m-jacket.jpg" ,
-    "color": ["white", "pink"],
-    "title":"바라클라바",
-    "stock": 10,
-    "size": ["S", "M", "L"],
-    "price": 19000,
-    "detail": "상품 설명"
-  },
-
-  {
-    "id": 418,
-    "model": "다희",
-    "category": "accessory",
-    "img":"/public/images/blackYak m-jacket.jpg" ,
-    "color": ["white", "pink"],
-    "title":"바라클라바",
-    "stock": 10,
-    "size": ["S", "M", "L"],
-    "price": 19000,
-    "detail": "상품 설명"
-  },
-
-  {
-    "id": 419,
-    "model": "다희",
+    "id": 56,
+    "model": "하정",
     "category": "bottom",
-    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "img":"/public/images/hajeong/hj_skirt6.webp" ,
     "color": ["white", "pink"],
-    "title":"다희's 바지",
+    "title":"치마",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
@@ -299,12 +299,333 @@
   },
 
   {
-    "id": 420,
-    "model": "다희",
-    "category": "top",
-    "img":"/public/images/blackYak m-jacket.jpg" ,
+    "id": 61,
+    "model": "하정",
+    "category": "bottom",
+    "img":"/public/images/hajeong/hj_pants1.jpg" ,
     "color": ["white", "pink"],
-    "title":"다희's 상의",
+    "title":"바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 62,
+    "model": "하정",
+    "category": "bottom",
+    "img":"/public/images/hajeong/hj_pants2.webp" ,
+    "color": ["white", "pink"],
+    "title":"바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 63,
+    "model": "하정",
+    "category": "bottom",
+    "img":"/public/images/hajeong/hj_pants3.webp" ,
+    "color": ["white", "pink"],
+    "title":"바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 64,
+    "model": "하정",
+    "category": "bottom",
+    "img":"/public/images/hajeong/hj_pants4.webp" ,
+    "color": ["white", "pink"],
+    "title":"바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 65,
+    "model": "하정",
+    "category": "bottom",
+    "img":"/public/images/hajeong/hj_pants5.webp" ,
+    "color": ["white", "pink"],
+    "title":"바지",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 71,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress1.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 72,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress2.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 73,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress3.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 74,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress4.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 75,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress5.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 76,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress6.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 77,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress7.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 78,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress8.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 79,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress9.webp" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 80,
+    "model": "하정",
+    "category": "dress",
+    "img":"/public/images/hajeong/hj_dress10.webp" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 91,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory1.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 92,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory2.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 93,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory3.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 94,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory4.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 95,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory5.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 96,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory6.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 97,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory7.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 98,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory8.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 99,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory9.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  }
+  ,
+
+  {
+    "id": 100,
+    "model": "하정",
+    "category": "accessory",
+    "img":"/public/images/hajeong/hj_accessory10.jpg" ,
+    "color": ["white", "pink"],
+    "title":"원피스",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
