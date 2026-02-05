@@ -16,7 +16,7 @@ export default function Section({setCartItems, cartItems, isLogin, id, handleApp
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/productList/*' element={<ProductList />} />
-                <Route path='/productDetail/*' element={<ProductDetails  handleAddToCart={handleAddToCart} isLogin={isLogin}/>} />
+                <Route path='/productDetail/*' element={<ProductDetails  handleAddToCart={handleAddToCart} isLogin={isLogin}/>} handleAddToCart={handleAddToCart}/>
                 <Route path="/myPage" element={<MyPage id={id} coupons={[{ id: 1, name: '50% 쿠폰' }]} handleApplyCoupon={handleApplyCoupon} />} />
                 <Route path="/cart" element={<Cart handleAddToCart={handleAddToCart} isLogin={isLogin} id={id} cartInput={cartInput} cartItems={cartItems}
                                                 appliedDiscount={appliedDiscount} setCartItems={setCartItems}

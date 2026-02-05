@@ -4,7 +4,7 @@ import { FiUser, FiShoppingBag, FiTrash2, FiPlus, FiMinus, FiShoppingCart } from
 import { useProduct } from '../context/ProductContext';
 
 export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isLogin, id, handleApplyCoupon, setCartItems,
-                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartInput, cartItems}) {
+                                 selectedProductTotal, discountAmount, deliveryFee, finalTotal, cartItems}) {
   const navigate = useNavigate();
   const handleQuantityChange = (id, d) => {let cartItemsCheck = cartItems.map(array => array.id === id ? { ...array, count: Math.max(1, array.count + d) } : array)
                                             setCartItems(cartItemsCheck); 
