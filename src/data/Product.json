@@ -3,7 +3,7 @@
     "id": 1,
     "model": "하정",
     "category": "outer",
-    "img":"/public/images/hajeong/hj_outer1.jpg" ,
+    "img":"/public/images/hajeong/hj_outer1.webp" ,
     "color": ["black", "white"],
     "title":"아우터",
     "stock": 10,
@@ -626,6 +626,266 @@
     "img":"/public/images/hajeong/hj_accessory10.jpg" ,
     "color": ["white", "pink"],
     "title":"원피스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 401,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/blackYak-jacket.jpg" ,
+    "color": ["mint", "pink"],
+    "title":"블랙야크 m선라이트 AWC자켓",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 402,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/blackYak-padding.jpg" ,
+    "color": ["white", "pink", "black"],
+    "title":"블랙야크 여성 경량패딩",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 70000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 403,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/blackYak-jacket.jpg" ,
+    "color": ["white", "pink"],
+    "title":"바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 404,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/blackYak-jacket.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 외투",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 405,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/outer5.jpg" ,
+    "color": ["black", "white"],
+    "title":"롱패딩 점퍼",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 130000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 406,
+    "model": "다희",
+    "category": "dress",
+    "img":"/public/images/dahee/dress1.webp" ,
+    "color": ["white", "black", "gray"],
+    "title":"크롭 맨투맨 원피스 set",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 54000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 407,
+    "model": "다희",
+    "category": "bottom",
+    "img":"/public/images/dahee/bottom2.jpg" ,
+    "color": ["blue", "black"],
+    "title":"이블렛 뒷밴딩 데님 롱스커트",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 47800,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 408,
+    "model": "다희",
+    "category": "accessor",
+    "img":"/public/images/dahee/accessory7.jpg" ,
+    "color": ["white", "black", "orange"],
+    "title":"온 클라우드몬스터 런닝화",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 409,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory6.webp" ,
+    "color": ["beige", "brown", "gray"],
+    "title":"오즈어그웨어 클래식 어그부츠",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 119000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 410,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/outer4.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"블랙야크 여성 후리스",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 62800,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 411,
+    "model": "다희",
+    "category": "top",
+    "img":"/public/images/dahee/top1.jpg" ,
+    "color": ["white", "black", "pink"],
+    "title":"네파 기능성집업 폴라텍",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 169000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 412,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory1.webp" ,
+    "color": ["white", "pink"],
+    "title":"블레티 캐시미어 바라클라바",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 413,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory2.jpg" ,
+    "color": ["white", "pink"],
+    "title":"하이븐 보들보들 반장갑",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 414,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory3.jpg" ,
+    "color": ["white", "pink", "gray"],
+    "title":"꼼띠아 앙고라 오픈형 손가락 장갑",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 415,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory4.jpg" ,
+    "color": ["red", "white"],
+    "title":"99세일하우스 핸드워머 꽈배기 장갑",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 416,
+    "model": "다희",
+    "category": "accessory",
+    "img":"/public/images/dahee/accessory5.jpg" ,
+    "color": ["white", "beige"],
+    "title":"시크덩꼬 통굽 뮽 슬리퍼",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 417,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/outer2.webp" ,
+    "color": ["white", "black"],
+    "title":"자라 ZARA 자라 크롭 우븐자켓",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 418,
+    "model": "다희",
+    "category": "top",
+    "img":"/public/images/dahee/top3.jpg" ,
+    "color": ["pink", "beige", "navy"],
+    "title":"비스코스 소프트베이직 니트조끼",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 419,
+    "model": "다희",
+    "category": "outer",
+    "img":"/public/images/dahee/outer3.jpg" ,
+    "color": ["white", "pink"],
+    "title":"링클 리본 가디건",
+    "stock": 10,
+    "size": ["S", "M", "L"],
+    "price": 19000,
+    "detail": "상품 설명"
+  },
+
+  {
+    "id": 420,
+    "model": "다희",
+    "category": "bottom",
+    "img":"/public/images/dahee/bottom1.webp" ,
+    "color": ["white", "pink", "beige", "black"],
+    "title":"무신사 와이드 벨티드 팬츠",
     "stock": 10,
     "size": ["S", "M", "L"],
     "price": 19000,
