@@ -17,8 +17,6 @@ import Join from './components/Join';
 import ProductDetail from './components/ProductDetails';
 
 import PayMent from './components/PayMent';
-
-import './styles/style02.css'
 import './styles/SideBar.css'
 import SideBar from './components/SideBar';
 
@@ -157,7 +155,7 @@ function App() {
   
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const selectedIds = cartItems.map(item => item.id);
-  const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count), 0);
+  const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count ), 0);
 
   const discountAmount = selectedProductTotal * appliedDiscount;
   const deliveryFee = (selectedProductTotal >= 80000 || selectedProductTotal === 0) ? 0 : 3000;
