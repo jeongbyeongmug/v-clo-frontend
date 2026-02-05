@@ -146,11 +146,6 @@ function App() {
     { id: 101, name: '보송폭닥 크롭 니트', price: 22800, count: 1, img: 'https://images.unsplash.com/photo-1576185055363-6d7c88000919?q=80&w=200' }
   ]);
   
-  useEffect(() => {
-    const saved = JSON.parse(sessionStorage.getItem('loginInfo'));
-    if (saved) setLoginInfo(saved);
-  }, []);
-  
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const selectedIds = cartItems.map(item => item.id);
   const selectedProductTotal = cartItems.filter(item => selectedIds.includes(item.id)).reduce((acc, cur) => acc + (cur.price * cur.count), 0);
@@ -160,13 +155,15 @@ function App() {
   const finalTotal = selectedProductTotal - discountAmount + deliveryFee;
 
   const handleAddToCart = (product) => {
+    console.log(product.count)
+    // console.log(cartItems)
     if (cartItems.find(item => item.id === product.id)) {
-      console.log(cartItems.filter(item => selectedIds.includes(item.id)))
+      
       alert('이미 장바구니에 있는 상품입니다.');
       return;
     }
     setCartItems([...cartItems, { ...product }]);
-    console.log(selectedProductTotal)
+    // console.log(cartItems)
     alert('장바구니에 상품을 담았습니다.');
   };
 
@@ -191,7 +188,7 @@ function App() {
            </div>
            <Section isLogin={isLogin} id={id} handleApplyCoupon={handleApplyCoupon} cartItems={cartItems} handleAddToCart={handleAddToCart} 
                     appliedDiscount={appliedDiscount} selectedIds={selectedIds} selectedProductTotal={selectedProductTotal}
-                    discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal}/>
+                    discountAmount={discountAmount} deliveryFee={deliveryFee} finalTotal={finalTotal} setCartItems={setCartItems}/>
            <SideBar isLogin={isLogin}/>
           <Footer />
         </div>
