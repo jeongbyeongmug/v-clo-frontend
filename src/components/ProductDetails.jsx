@@ -70,12 +70,13 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
 
   const addCart = () => {
     if (selectedList.length === 0) return alert("옵션을 선택해주세요.");
+    
     selectedList.forEach(item => {
       const productItem = {
-        id,
+        id: `${id}-${item.size}`, 
         name: currentItem?.title,
         price: item.price,
-        img: mainImg,
+        img: currentItem?.img, 
         option: item.optionName,
         size: item.size,
         count: item.count
@@ -142,7 +143,8 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
                   </div>
                   <div className="size-buttons">
                     {['S', 'M', 'L', 'XL'].map(size => (
-                      <button key={size} className="btn-size" onClick={() => selectSize(size)}>
+                      <button key={size} className="btn-size" 
+                      onClick={() => selectSize(size)}>
                         <img src="/images/deliveryMan.jpg" className="icon-delivery" alt="delivery" />
                         {size} [즉시출고]
                       </button>
@@ -263,7 +265,7 @@ export default function ProductDetails({ isLogin, onLogout, onAddToCart }) {
           <h3 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '22px' }}>추천 상품</h3>
           <ul className="product_list2">
             {recommendedProducts.map((item) => (
-              <li className="product_item2" key={item.id} onClick={() => navigate(`/product?id=${item.id}`)} style={{ cursor: 'pointer' }}>
+              <li className="product_item2" key={item.id}>
                 <div className="product_box2">
                   <div className="img_area"><img src={item.img} alt={item.title} /></div>
                   <div className="info_area">
