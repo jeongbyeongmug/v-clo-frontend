@@ -27,7 +27,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
 
   // --- [추천 상품 4개 랜덤 추출] ---
   const recommendedProducts = [...product]
-    .filter(item => String(item.id) !== String(id) ) // 현재 상품 제외
+    .filter(item => String(item.id) !== String(id)) // 현재 상품 제외
     .sort(() => Math.random() - 0.5) // 무작위 섞기
     .slice(0, 4); // 4개만 선택
   // --------------------------------------------
@@ -35,6 +35,8 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [tab, setTab] = useState('상품정보');
   const [mainImg, setMainImg] = useState(currentItem?.img || "");
+
+  // [수정] 초기 옵션 이름을 JSON의 첫 번째 컬러로 설정
   const [selectedOptionName, setSelectedOptionName] = useState(currentItem?.color?.[0] || "단일색상");
   const [selectedList, setSelectedList] = useState([]);
 
@@ -44,7 +46,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
   }, [currentItem, id]);
 
   const selectSize = (size) => {
-    const key = `${size}-${Date.now()}`; 
+    const key = `${size}-${Date.now()}`;
     const newItem = {
       key: key,
       optionName: selectedOptionName,
@@ -70,13 +72,13 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
 
   const addCart = () => {
     if (selectedList.length === 0) return alert("옵션을 선택해주세요.");
-    
+
     selectedList.forEach(item => {
       const productItem = {
-        id: `${id}-${item.size}`, 
-        name: currentItem?.title,
+        id: `${id}-${item.size}`,
+        title: currentItem?.title,
         price: item.price,
-        img: currentItem?.img, 
+        img: currentItem?.img,
         option: item.optionName,
         size: item.size,
         count: item.count
@@ -115,6 +117,8 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
               <span className="badge">쿠폰할인</span>
               <span className="badge">즉시출고</span>
               <span className="badge">무료교환</span>
+              {/* [추가] 재고(stock) 정보 표시 */}
+              <span className="badge" style={{ backgroundColor: '#d4a373', color: '#333', border: '1px solid #ddd', fontWeight: 'bold' }}>재고: {currentItem.stock}개</span>
             </div>
 
             <div className="info-box">
@@ -131,6 +135,27 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
             <div className="option-selection">
               <div className="selection-row" style={{ marginTop: '15px' }}>
                 <div className="content">
+                  {/* [수정] 컬러 옵션을 JSON 데이터 기반으로 생성 */}
+                  <div className="color-options-wrap" style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+                    {currentItem.color?.map((color) => (
+                      <div
+                        key={color}
+                        onClick={() => setSelectedOptionName(color)}
+                        className={`color-item ${selectedOptionName === color ? 'active' : ''}`}
+                        style={{
+                          padding: '8px 15px',
+                          border: selectedOptionName === color ? '2px solid #333' : '1px solid #e5e5e5',
+                          borderRadius: '4px',
+                          cursor: 'pointer',
+                          fontSize: '13px',
+                          backgroundColor: selectedOptionName === color ? '#f9f9f9' : '#fff'
+                        }}
+                      >
+                        {color}
+                      </div>
+                    ))}
+                  </div>
+
                   <div className="mini-preview-box"
                     onClick={() => setIsSelected(true)}
                     style={{
@@ -139,12 +164,15 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
                       cursor: 'pointer', border: isSelected ? '2px solid #333' : '1px solid #e5e5e5', boxSizing: 'border-box'
                     }}>
                     <img src={currentItem.img} alt="미리보기" style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px', borderRadius: '3px' }} />
-                    <span style={{ fontSize: '13px', color: '#333', fontWeight: '500' }}>{currentItem.title}</span>
+                    <span style={{ fontSize: '13px', color: '#333', fontWeight: '500' }}>
+                      {currentItem.title} ({selectedOptionName})
+                    </span>
                   </div>
+
                   <div className="size-buttons">
-                    {['S', 'M', 'L', 'XL'].map(size => (
-                      <button key={size} className="btn-size" 
-                      onClick={() => selectSize(size)}>
+                    {currentItem.size?.map(size => (
+                      <button key={size} className="btn-size"
+                        onClick={() => selectSize(size)}>
                         <img src="/images/deliveryMan.jpg" className="icon-delivery" alt="delivery" />
                         {size} [즉시출고]
                       </button>
@@ -158,7 +186,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
               <div className="selected-items-list">
                 {selectedList.map(item => (
                   <div key={item.key} className="selected-item-box">
-                    <div className="item-name">{item.size} 사이즈</div>
+                    <div className="item-name">{item.optionName} / {item.size} 사이즈</div>
                     <div className="item-control-row">
                       <div className="count-btn-group">
                         <button onClick={() => changeCount(item.key, -1)}>-</button>
@@ -248,16 +276,25 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
                 {detailBtnText}
               </button>
               {isDetailOpen && (
-                <div className="details-content">
-                  <img src={currentItem.img} alt="상세이미지" style={{ width: '100%', maxWidth: '800px', display: 'block', margin: '0 auto' }} />
-                </div>
+                <>
+                  <div className="details-content">
+                    <img src={currentItem.img} alt="상세이미지" style={{ width: '100%', maxWidth: '800px', display: 'block', margin: '0 auto' }} />
+                  </div>
+                  <div className="detail-text-box" style={{
+                    textAlign: 'center', padding: '30px 20px', fontSize: '30px',
+                    color: '#333', lineHeight: '1.6', whiteSpace: 'pre-wrap'
+                  }}>
+                    {currentItem.detail}
+                  </div>
+                </>
               )}
             </section>
           </div>
+
         )}
 
         {tab === '리뷰' && <Review />}
-        {tab === '관련상품' && <RelatedProducts handleAddToCart={handleAddToCart}/>}
+        {tab === '관련상품' && <RelatedProducts handleAddToCart={handleAddToCart} />}
         {tab === 'Q&A' && <Qna />}
         {tab === '배송/환불' && <div style={{ padding: '50px', textAlign: 'center' }}>무료 배송 및 7일 이내 환불 가능합니다.</div>}
 
@@ -266,7 +303,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
           <ul className="product_list2">
             {recommendedProducts.map((item) => (
               <li className="product_item2" key={item.id}
-              onClick={() => {handleAddToCart(item); navigate('/cart');}}> 
+                onClick={() => { handleAddToCart(item); navigate('/cart'); }}>
                 <div className="product_box2">
                   <div className="img_area"><img src={item.img} alt={item.title} /></div>
                   <div className="info_area">
