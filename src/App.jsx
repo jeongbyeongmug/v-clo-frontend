@@ -20,7 +20,19 @@ import PayMent from './components/PayMent';
 import './styles/SideBar.css'
 import SideBar from './components/SideBar';
 
+function RedirectHandler(){
+  const navigate = useNavigate();
 
+  useEffect(()=>{
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get('redirect');
+    if(redirect){
+      navigate(redirect.replace('/V-CLO',''), {replace: true})
+    } //if
+  },[]);
+
+  return null;
+}
 
 function App() {
   const navigate = useNavigate(); //Hook useNavigate 정의
@@ -182,6 +194,8 @@ function App() {
   };
 
   return (
+    <>
+    <RedirectHandler />
     <Routes>
       {/* 기본 화면: 헤더, 네브, 바디 다 보여주고 싶을 때 */}
       <Route path="*" element={
@@ -211,6 +225,7 @@ function App() {
       
       <Route path="/payMent" element={loginInfo.isLogin ? <PayMent finalTotal={finalTotal}/> : <Navigate to="/login" />} />
     </Routes>
+    </>
   );
 }
 

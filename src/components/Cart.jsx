@@ -39,7 +39,7 @@ export default function Cart({appliedDiscount, handleAddToCart, selectedIds, isL
               <input type="checkbox" checked={selectedIds.includes(item.id)} onChange={() => {
                 selectedIds.includes(item.id) ? selectedIds = selectedIds.filter(i => i !== item.id) : selectedIds = [...selectedIds, item.id];
               }} className="checkbox" />
-              <img src={item.img} alt="p" className="product-img" style={{ width: '60px', height: '75px', objectFit: 'cover' }} />
+              <img src={`${import.meta.env.BASE_URL}/${item.img}`.replace(/\/+/g, '/')} alt="p" className="product-img" style={{ width: '60px', height: '75px', objectFit: 'cover' }} />
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: 'bold', fontSize: '14px' }}>{item.title}</div>
                 <div>{item.price.toLocaleString()}원</div>

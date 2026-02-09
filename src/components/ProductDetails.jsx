@@ -100,7 +100,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
       <main className="container">
         <section className="product-top">
           <div className="product-image">
-            <img src={currentItem.img} alt={currentItem.title} />
+            <img src={import.meta.env.BASE_URL + currentItem.img.replace(/^\//, '')} alt={currentItem.title} />
           </div>
 
           <div className="product-info">
@@ -163,7 +163,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
                       borderRadius: '5px', marginBottom: '10px', backgroundColor: '#fff',
                       cursor: 'pointer', border: isSelected ? '2px solid #333' : '1px solid #e5e5e5', boxSizing: 'border-box'
                     }}>
-                    <img src={currentItem.img} alt="미리보기" style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px', borderRadius: '3px' }} />
+                    <img src={import.meta.env.BASE_URL + currentItem.img.replace(/^\//, '')} alt="미리보기" style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px', borderRadius: '3px' }} />
                     <span style={{ fontSize: '13px', color: '#333', fontWeight: '500' }}>
                       {currentItem.title} ({selectedOptionName})
                     </span>
@@ -173,7 +173,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
                     {currentItem.size?.map(size => (
                       <button key={size} className="btn-size"
                         onClick={() => selectSize(size)}>
-                        <img src="/images/deliveryMan.jpg" className="icon-delivery" alt="delivery" />
+                        <img src={`${import.meta.env.BASE_URL}/images/deliveryMan.jpg`.replace(/\/+/g, '/')} className="icon-delivery" alt="delivery" />
                         {size} [즉시출고]
                       </button>
                     ))}
@@ -278,7 +278,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
               {isDetailOpen && (
                 <>
                   <div className="details-content">
-                    <img src={currentItem.img} alt="상세이미지" style={{ width: '100%', maxWidth: '800px', display: 'block', margin: '0 auto' }} />
+                    <img src={import.meta.env.BASE_URL + currentItem.img.replace(/^\//, '')} alt="상세이미지" style={{ width: '100%', maxWidth: '800px', display: 'block', margin: '0 auto' }} />
                   </div>
                   <div className="detail-text-box" style={{
                     textAlign: 'center', padding: '30px 20px', fontSize: '30px',
@@ -305,7 +305,7 @@ export default function ProductDetails({ isLogin, onLogout, handleAddToCart }) {
               <li className="product_item2" key={item.id}
                 onClick={() => { handleAddToCart(item); navigate('/cart'); }}>
                 <div className="product_box2">
-                  <div className="img_area"><img src={item.img} alt={item.title} /></div>
+                  <div className="img_area"><img src={import.meta.env.BASE_URL + item.img.replace(/^\//, '')} alt={item.title} /></div>
                   <div className="info_area">
                     <div className="price_top">
                       <span className="discount">{item.discount || "SALE"}</span>

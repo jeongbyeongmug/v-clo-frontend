@@ -24,7 +24,7 @@ const RelatedProducts = ({ currentId, handleAddToCart }) => {
             {/* 이미지 영역 */}
             <div style={{ borderRadius: '10px', overflow: 'hidden', backgroundColor: '#f5f5f5', aspectRatio: '3/4' }}>
               <img 
-                src={item.img} 
+                src={import.meta.env.BASE_URL + item.img.replace(/^\//, '')} 
                 alt={item.title} 
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
               />
