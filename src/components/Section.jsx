@@ -23,8 +23,5 @@ export default function Section({setCartItems, cartItems, isLogin, id, handleApp
                                                 finalTotal={finalTotal} handleApplyCoupon={handleApplyCoupon}/>} />
             </Routes>
         </div>
-        <div className="chatSupport">
-            <img src="/public/images/talk-icon-brown.jpg" />
-        </div>
     </section>
 )}//Section
