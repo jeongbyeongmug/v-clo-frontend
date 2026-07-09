@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   // <StrictMode>
   // </StrictMode>,
   <ProductProvider>
-    <BrowserRouter basename='/V-CLO'>
+    <BrowserRouter basename='/v-clo-frontend'>
       <ScrollToTop />
         <App />
     </BrowserRouter>
