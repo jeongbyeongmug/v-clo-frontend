@@ -1,10 +1,10 @@
 # 🧥 V-CLO — 의류 쇼핑몰 (5인의 옷장)
 
-> KDT 과정에서 진행한 **첫 팀 프로젝트**(5인 세미프로젝트)입니다. React 기반 의류 쇼핑몰로, 저는 **장바구니 · 결제 · 마이페이지 · 사이드바**와 **배포**를 담당했습니다.
+> KDT 과정에서 진행한 **첫 팀 프로젝트**(5인 세미프로젝트)입니다. React 기반 의류 쇼핑몰로, 저는 **장바구니 · 결제 · 마이페이지 · 사이드바 · 메인 Section**을 담당했습니다.
 
 - **배포**: https://jeongbyeongmug.github.io/v-clo-frontend/ ｜ **기간**: 2026.01 ~ 2026.02 ｜ **팀**: 5인
 - **기술**: React 19 · Vite · React Router v7 · styled-components · Axios
-- **담당 (정병묵)**: 장바구니 · 결제 · 마이페이지 · 사이드바(스마트 서치·마이픽·채널 연결·빠른 이동) · 메인 Section · 배포(GitHub Pages)
+- **담당 (정병묵)**: 장바구니 · 결제 · 마이페이지 · 사이드바(스마트 서치·마이픽·채널 연결·빠른 이동) · 메인 Section
 - **팀 레포**: https://github.com/KDT07/V-CLO
 
 <br>
@@ -58,9 +58,6 @@ if (externalUrl) window.open(externalUrl, "_blank");   // 네이버 톡톡 / 카
 
 ## 🤝 협업 — 개인 브랜치 → PR → 통합
 5명이 각자 개인 브랜치에서 작업하고 PR로 `combine` 브랜치에 통합했습니다(PR #40~#52). 충돌이 잦은 `App.jsx`(라우팅·전역 상태 집결지)는 **PR 전에 `combine`을 먼저 당겨와 로컬에서 충돌을 해소한 뒤 올리는** 순서로 처리했습니다.
-
-## 🚀 배포 — GitHub Pages
-`vite build` 결과물을 `gh-pages` 브랜치로 배포했습니다. 서브경로 호스팅(`/v-clo-frontend/`)에 맞춰 **Vite `base`와 Router `basename`을 설정**해 자산·라우팅 경로를 일치시켰습니다.
 
 <br>
 
