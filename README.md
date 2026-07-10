@@ -86,4 +86,4 @@ npm run build                  # 프로덕션 빌드
 ---
 
 > 첫 팀 프로젝트라 완성도보다 **협업과 상태 설계 경험**에 집중했습니다.
-> 백엔드 포트폴리오의 메인 프로젝트는 → [`nailed-springboot-react`](https://github.com/jeongbyeongmug/nailed-springboot-react)
+> 백엔드 포트폴리오의 메인 프로젝트는 → https://github.com/jeongbyeongmug/nailed-marketplace
